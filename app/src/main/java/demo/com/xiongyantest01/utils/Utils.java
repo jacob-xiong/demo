@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import demo.com.xiongyantest01.activity.AnimationActivity;
 import demo.com.xiongyantest01.activity.SwipeRefreshActivity;
+import demo.com.xiongyantest01.activity.WheelViewActivity;
 import demo.com.xiongyantest01.activity.Win8Activity;
 import demo.com.xiongyantest01.bean.MainBean;
 
@@ -12,8 +13,8 @@ import demo.com.xiongyantest01.bean.MainBean;
  */
 
 public class Utils {
-    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新"};
-    private static Class<?>[] cls = new Class<?>[]{AnimationActivity.class, Win8Activity.class, SwipeRefreshActivity.class};
+    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView"};
+    private static Class<?>[] cls = new Class<?>[]{AnimationActivity.class, Win8Activity.class, SwipeRefreshActivity.class, WheelViewActivity.class};
 
     public static ArrayList<MainBean> getMainData() {
         ArrayList<MainBean> list = new ArrayList<>();
