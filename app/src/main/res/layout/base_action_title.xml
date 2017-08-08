@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="@dimen/action_height"
-    android:background="#999999"
+    android:background="#fff"
     android:visibility="gone">
 
     <ImageView
         android:id="@+id/action_back"
-        android:layout_width="25dp"
+        android:layout_width= "25dp"
         android:layout_height="25dp"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
