@@ -10,6 +10,8 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.Volley;
+
 import demo.com.xiongyantest01.R;
 import demo.com.xiongyantest01.utils.T;
 
@@ -123,4 +125,5 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         viewStub.setLayoutResource(setLayoutId());
         viewStub.inflate();
     }
+
 }

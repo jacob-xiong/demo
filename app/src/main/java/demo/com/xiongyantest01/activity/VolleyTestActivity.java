@@ -1,6 +1,5 @@
 package demo.com.xiongyantest01.activity;
 
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
@@ -11,8 +10,6 @@ import android.widget.LinearLayout;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -20,8 +17,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 import demo.com.xiongyantest01.R;
-import demo.com.xiongyantest01.utils.BitmapCache;
 import demo.com.xiongyantest01.utils.Utils;
+import demo.com.xiongyantest01.utils.VolleyManager;
 
 /**
  * Created by xiongyan on 2017/8/8.
@@ -29,6 +26,8 @@ import demo.com.xiongyantest01.utils.Utils;
  */
 
 public class VolleyTestActivity extends BaseActivity implements View.OnClickListener {
+    private static String IMG_URL = "http://img.my.csdn.net/uploads/201404/13/1397393290_5765.jpeg";
+    private static String IMG_URL_OTHER = "http://car3.autoimg.cn/cardfs/product/g4/M06/B2/6F/800x0_1_q87_autohomecar__wKjB01g9ZMWAKLRfAAd5SpRbssA099.jpg";
     private LinearLayout getButton;
     private ImageView requestTv;
     private RequestQueue mQueue;
@@ -62,8 +61,8 @@ public class VolleyTestActivity extends BaseActivity implements View.OnClickList
             case R.id.get_button:
                 getRequest();
                 getJsonRequest();
-//                getImageStr();
-                addImgaeLoader();
+                getImageStr();
+//                addImgaeLoader();
                 break;
             default:
                 super.onClick(v);
@@ -107,26 +106,24 @@ public class VolleyTestActivity extends BaseActivity implements View.OnClickList
     }
 
     private void getImageStr() {
-        ImageRequest imageRequest = new ImageRequest(
-                "http://car3.autoimg.cn/cardfs/product/g4/M06/B2/6F/800x0_1_q87_autohomecar__wKjB01g9ZMWAKLRfAAd5SpRbssA099.jpg",
-                new Response.Listener<Bitmap>() {
-                    @Override
-                    public void onResponse(Bitmap response) {
-                        requestTv.setImageBitmap(response);
-                    }
-                }, 0, 0, Bitmap.Config.ARGB_8888, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                requestTv.setImageResource(R.drawable.bottom);
-            }
-        });
-        mQueue.add(imageRequest);
+        VolleyManager.LoadImageOther(context, requestTv, IMG_URL_OTHER);
+//        ImageRequest imageRequest = new ImageRequest(
+//                "http://car3.autoimg.cn/cardfs/product/g4/M06/B2/6F/800x0_1_q87_autohomecar__wKjB01g9ZMWAKLRfAAd5SpRbssA099.jpg",
+//                new Response.Listener<Bitmap>() {
+//                    @Override
+//                    public void onResponse(Bitmap response) {
+//                        requestTv.setImageBitmap(response);
+//                    }
+//                }, 0, 0, Bitmap.Config.ARGB_8888, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                requestTv.setImageResource(R.drawable.bottom);
+//            }
+//        });
+//        mQueue.add(imageRequest);
     }
 
     private void addImgaeLoader() {
-        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
-        ImageLoader.ImageListener listener = ImageLoader.getImageListener(requestTv,
-                R.drawable.bottom, R.drawable.left_bottom);
-        imageLoader.get("http://img.my.csdn.net/uploads/201404/13/1397393290_5765.jpeg", listener);
+        VolleyManager.LoadImage(context, requestTv, IMG_URL);
     }
 }
