@@ -3,6 +3,8 @@ package demo.com.xiongyantest01.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewStub;
@@ -10,17 +12,17 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.Volley;
-
 import demo.com.xiongyantest01.R;
+import demo.com.xiongyantest01.bean.ReturnTemple.ReturnTemple;
 import demo.com.xiongyantest01.utils.T;
+import demo.com.xiongyantest01.utils.web.Web;
 
 /**
  * Created by xiongyan on 2017/8/1.
  * 基类Activity
  */
 
-public abstract class BaseActivity extends Activity implements View.OnClickListener {
+public abstract class BaseActivity extends Activity implements View.OnClickListener, Handler.Callback {
     protected LayoutInflater mInflater;
     protected Context context;
     private View mActionView;
@@ -28,6 +30,7 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
     private TextView mActionBarTitle;
     private ImageView mActionBarRightImg;
     private TextView mActionBarRightTv;
+    public Handler handler = new Handler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         mInflater = LayoutInflater.from(this);
         context = getApplicationContext();
+        Web.init(context);
         setContentView(R.layout.base_activity);
         initIntent();
         initLayout();
@@ -126,4 +130,23 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         viewStub.inflate();
     }
 
+    @Override
+    public final boolean handleMessage(Message msg) {
+        boolean result = true;
+        if (msg != null && msg.obj instanceof ReturnTemple) {
+            ReturnTemple temple = (ReturnTemple) msg.obj;
+            if (temple.result == -10) {
+
+            } else if (temple.result == -100) {
+
+            }
+            result = true;
+        }
+        dealWithMessage(msg);
+
+        return result;
+    }
+
+    protected void dealWithMessage(Message msg) {
+    }
 }
