@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import demo.com.xiongyantest01.activity.AnimationActivity;
 import demo.com.xiongyantest01.activity.BaseTestActivity;
+import demo.com.xiongyantest01.activity.PermissionActivity;
 import demo.com.xiongyantest01.activity.SwipeRefreshActivity;
 import demo.com.xiongyantest01.activity.VolleyTestActivity;
 import demo.com.xiongyantest01.activity.WheelViewActivity;
@@ -18,8 +19,8 @@ import demo.com.xiongyantest01.utils.web.interfacepackage.WebMaps;
  */
 
 public class Utils {
-    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试"};
-    private static Class<?>[] cls = new Class<?>[]{AnimationActivity.class, Win8Activity.class, SwipeRefreshActivity.class, WheelViewActivity.class, BaseTestActivity.class, VolleyTestActivity.class};
+    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试", "判定是否有权限"};
+    private static Class<?>[] cls = new Class<?>[]{AnimationActivity.class, Win8Activity.class, SwipeRefreshActivity.class, WheelViewActivity.class, BaseTestActivity.class, VolleyTestActivity.class, PermissionActivity.class};
 
     public static ArrayList<MainBean> getMainData() {
         ArrayList<MainBean> list = new ArrayList<>();
@@ -99,6 +100,7 @@ public class Utils {
          return;
          }**/
     }
+
     /**
      * @return 返回服务器地址
      */

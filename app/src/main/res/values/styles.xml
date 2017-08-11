@@ -25,4 +25,12 @@
         <item name="android:textColor">#e60012</item>
         <item name="android:textSize">15dp</item>
     </style>
+
+    <style name="text_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp48</item>
+        <item name="android:layout_marginTop">@dimen/dp12</item>
+        <item name="android:gravity">center</item>
+
+    </style>
 </resources>
