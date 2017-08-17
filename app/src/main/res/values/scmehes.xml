@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scheme">test</string>
+    <string name="activity_jump">jump</string>
+    <string name="activity_win8">win8</string>
+    <string name="activity_SwipeRefresh">SwipeRefresh</string>
+    <string name="activity_wheel_view">wheel_view</string>
+    <string name="activity_base_test">base_test</string>
+    <string name="activity_volley">volley</string>
+    <string name="activity_permission">permission</string>
+
+
+
+</resources>

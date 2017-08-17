@@ -1,16 +1,14 @@
 package demo.com.xiongyantest01.utils;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import demo.com.xiongyantest01.activity.AnimationActivity;
-import demo.com.xiongyantest01.activity.BaseTestActivity;
-import demo.com.xiongyantest01.activity.PermissionActivity;
-import demo.com.xiongyantest01.activity.SwipeRefreshActivity;
-import demo.com.xiongyantest01.activity.VolleyTestActivity;
-import demo.com.xiongyantest01.activity.WheelViewActivity;
-import demo.com.xiongyantest01.activity.Win8Activity;
+import demo.com.xiongyantest01.R;
 import demo.com.xiongyantest01.bean.MainBean;
 import demo.com.xiongyantest01.utils.web.interfacepackage.WebMaps;
 
@@ -20,14 +18,14 @@ import demo.com.xiongyantest01.utils.web.interfacepackage.WebMaps;
 
 public class Utils {
     private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试", "判定是否有权限"};
-    private static Class<?>[] cls = new Class<?>[]{AnimationActivity.class, Win8Activity.class, SwipeRefreshActivity.class, WheelViewActivity.class, BaseTestActivity.class, VolleyTestActivity.class, PermissionActivity.class};
+    private static int [] host = new int[]{R.string.activity_jump, R.string.activity_win8, R.string.activity_SwipeRefresh, R.string.activity_wheel_view, R.string.activity_base_test, R.string.activity_volley, R.string.activity_permission};
 
     public static ArrayList<MainBean> getMainData() {
         ArrayList<MainBean> list = new ArrayList<>();
         for (int i = 0; i < title.length; i++) {
             MainBean bean = new MainBean();
             bean.setItemTitle(title[i]);
-            bean.setItemClass(cls[i]);
+            bean.setItemHost(host[i]);
             list.add(bean);
         }
         return list;
@@ -106,5 +104,18 @@ public class Utils {
      */
     public static String getUrl() {
         return "http://10.25.32.231:80";
+    }
+
+    public static Intent getIntent(Context context, int host) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getUri(context, host)));
+        return intent;
+    }
+
+    public static String getUri(Context context, int host) {
+        StringBuilder builder = new StringBuilder(context.getResources().getString(R.string.scheme));
+        builder.append("://");
+        builder.append(context.getResources().getString(host));
+        builder.append("/");
+        return builder.toString();
     }
 }

@@ -31,8 +31,8 @@ public class MainActivity extends Activity {
         initView();
     }
 
-    private void sendIntent(Class<?> cls) {
-        Intent intent = new Intent(this, cls);
+    private void sendIntent(int host) {
+        Intent intent = Utils.getIntent(this, host);
         startActivity(intent);
     }
 
@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
         myAdapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                sendIntent(list.get(position).getItemClass());
+                sendIntent(list.get(position).getItemHost());
             }
         });
         mRecyClerView.setAdapter(myAdapter);

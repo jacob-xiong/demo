@@ -6,7 +6,7 @@ package demo.com.xiongyantest01.bean;
 
 public class MainBean {
     private String itemTitle;
-    private Class<?> itemClass;
+    private int itemHost;
 
     public String getItemTitle() {
         return itemTitle;
@@ -16,11 +16,11 @@ public class MainBean {
         this.itemTitle = itemTitle;
     }
 
-    public Class<?> getItemClass() {
-        return itemClass;
+    public int getItemHost() {
+        return itemHost;
     }
 
-    public void setItemClass(Class<?> itemClass) {
-        this.itemClass = itemClass;
+    public void setItemHost(int itemHost) {
+        this.itemHost = itemHost;
     }
 }

@@ -76,7 +76,6 @@
     <!-- 壹钱包新增权限 end -->
 
 
-
     <!-- 小能SDK所需要的权限   其他权限以前有配置就不重复配置 -->
     <!-- SD卡读取权限，用户写入离线定位数据 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -101,16 +100,45 @@
         </activity>
         <activity
             android:name=".activity.AnimationActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_jump"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.Win8Activity"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_win8"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.SwipeRefreshActivity"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_SwipeRefresh"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
         </activity>
 
         <uses-library android:name="android.test.runner" />
@@ -118,23 +146,59 @@
         <activity
             android:name=".activity.WheelViewActivity"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_wheel_view"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".activity.BaseTestActivity"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_base_test"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.VolleyTestActivity"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_volley"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.PermissionActivity"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_permission"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
         </activity>
 
 
