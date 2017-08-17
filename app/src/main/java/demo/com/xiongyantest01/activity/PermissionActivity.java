@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import demo.com.xiongyantest01.R;
+import demo.com.xiongyantest01.utils.PermissionUtils;
 
 /**
  * Created by xiongyan on 2017/8/11.
@@ -41,7 +42,7 @@ public class PermissionActivity extends BaseActivity {
                 if (getNotification()) {
                     demo.setText("有");
                 } else {
-                    startSetting();
+                    PermissionUtils.GoToSetting(PermissionActivity.this);
                 }
             }
         });
