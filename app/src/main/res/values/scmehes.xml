@@ -8,6 +8,7 @@
     <string name="activity_base_test">base_test</string>
     <string name="activity_volley">volley</string>
     <string name="activity_permission">permission</string>
+    <string name="activity_provider">provider</string>
 
 
 

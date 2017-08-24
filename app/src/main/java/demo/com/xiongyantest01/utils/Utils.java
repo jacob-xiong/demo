@@ -17,8 +17,8 @@ import demo.com.xiongyantest01.utils.web.interfacepackage.WebMaps;
  */
 
 public class Utils {
-    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试", "判定是否有权限"};
-    private static int [] host = new int[]{R.string.activity_jump, R.string.activity_win8, R.string.activity_SwipeRefresh, R.string.activity_wheel_view, R.string.activity_base_test, R.string.activity_volley, R.string.activity_permission};
+    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试", "判定是否有权限","ContentProvider测试"};
+    private static int [] host = new int[]{R.string.activity_jump, R.string.activity_win8, R.string.activity_SwipeRefresh, R.string.activity_wheel_view, R.string.activity_base_test, R.string.activity_volley, R.string.activity_permission,R.string.activity_provider};
 
     public static ArrayList<MainBean> getMainData() {
         ArrayList<MainBean> list = new ArrayList<>();
