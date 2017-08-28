@@ -9,6 +9,7 @@
     <string name="activity_volley">volley</string>
     <string name="activity_permission">permission</string>
     <string name="activity_provider">provider</string>
+    <string name="activity_socket">socket</string>
 
 
 
