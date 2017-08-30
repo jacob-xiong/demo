@@ -235,6 +235,25 @@
         <service android:name="demo.com.xiongyantest01.socket.TCPServerService">
 
         </service>
+
+        <activity
+            android:name=".activity.BinderConnectionPoolActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_binder_pool"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
+        <service android:name="demo.com.xiongyantest01.BinderPool.BinderPoolService"
+            android:process=":binderPool">
+
+        </service>
     </application>
 
 

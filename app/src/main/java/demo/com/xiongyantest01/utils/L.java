@@ -56,4 +56,7 @@ public class L {
             Log.i(tag, msg);
     }
 
+    public static void s(String tag, String msg) {
+        System.out.println("--------------------" + tag + "---------" + msg);
+    }
 }

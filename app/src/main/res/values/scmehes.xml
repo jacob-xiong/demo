@@ -10,6 +10,7 @@
     <string name="activity_permission">permission</string>
     <string name="activity_provider">provider</string>
     <string name="activity_socket">socket</string>
+    <string name="activity_binder_pool">binder_connection_pool</string>
 
 
 
