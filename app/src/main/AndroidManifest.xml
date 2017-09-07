@@ -250,10 +250,26 @@
                     android:scheme="@string/scheme" />
             </intent-filter>
         </activity>
-        <service android:name="demo.com.xiongyantest01.BinderPool.BinderPoolService"
+        <service
+            android:name="demo.com.xiongyantest01.BinderPool.BinderPoolService"
             android:process=":binderPool">
 
         </service>
+
+        <activity
+            android:name=".activity.CustomViewActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_custom"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
     </application>
 
 
