@@ -11,4 +11,9 @@
 
     </demo.com.xiongyantest01.custom.SlideView>
 
+    <WebView
+        android:id="@+id/webview_demo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
