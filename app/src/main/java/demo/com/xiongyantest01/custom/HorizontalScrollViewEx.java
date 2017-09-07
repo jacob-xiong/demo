@@ -124,7 +124,7 @@ public class HorizontalScrollViewEx extends ViewGroup {
 
     private void smoothScrollBy(int dX, int dY) {
         mScroller.startScroll(getScrollX(), 0, dX, 500);
-        invalidate();
+        invalidate(); 
     }
 
     @Override
