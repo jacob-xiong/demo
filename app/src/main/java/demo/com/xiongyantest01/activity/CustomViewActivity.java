@@ -1,7 +1,6 @@
 package demo.com.xiongyantest01.activity;
 
 import android.os.Build;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,7 +15,7 @@ import demo.com.xiongyantest01.R;
 
 public class CustomViewActivity extends BaseActivity {
     private WebView webView;
-    private static final String LOAD_URL = "http://v.baidu.com/watch/6333039228407878322.html?page=videoMultiNeed&from_type=cherrypick&page=videoMultiNeed&framehost=baidu.baomihua.com&referer=http://baidu.baomihua.com/watch/6333039228407878322.html%3Fpage%3DvideoMultiNeed%26from_type%3Dcherrypick%26page%3DvideoMultiNeed&inner";
+    private static final String LOAD_URL = "http://www.111.com.cn/cmsPage/20171cce6bf80913144453/index.html";
 
     @Override
     protected int setLayoutId() {
@@ -30,6 +29,7 @@ public class CustomViewActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
         initWebView();
     }
 
@@ -56,7 +56,7 @@ public class CustomViewActivity extends BaseActivity {
 //        settings.setUseWideViewPort(true);  //将图片调整到适合webview的大小  无效
 //        settings.setLoadWithOverviewMode(true); // 缩放至屏幕的大小
 //
-//        webview.setWebChromeClient(new WebChromeClient() );
+//        webview.setWebChromeClient(new WebChromeClient() );v
 //        webview.loadUrl(contextLink);// 加载链接
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:grap="http://schemas.android.com/apk/res/demo.com.xiongyantest01"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <demo.com.xiongyantest01.custom.graph.GraphView
+        android:layout_width="300dp"
+        android:layout_height="480dp"
+        grap:colorX="@color/colorAccent"
+        grap:titleX="测试"
+        grap:colorY="@color/colorPrimary"
+        grap:titleY="价格"
+        android:paddingLeft="@dimen/dp12"/>
+</LinearLayout>

@@ -22,15 +22,11 @@
     <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-    <!-- 友盟需要的权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <!-- GET_TASKS用于检测APP是否处于前台、是否活着；REORDER_TASKS用于将APP切换到前台 -->
     <uses-permission android:name="android.permission.REORDER_TASKS" />
-
-    <!-- 可选权限 -->
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="org.simalliance.openmobileapi.SMARTCARD" />
@@ -41,27 +37,20 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <!-- 支付宝权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <!-- 读写sd卡权限 ，埋点需要 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 安全监控权限 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="com.ut.permission.DEVICE_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_SETTINGS" />
     <uses-permission android:name="getui.permission.GetuiService.com.yiwang" />
-
-    <!-- 百度 -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-
-    <!-- 壹钱包新增权限 start 翼支付需要的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -71,13 +60,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
-    <!-- 壹钱包新增权限 end -->
-
-
-    <!-- 小能SDK所需要的权限   其他权限以前有配置就不重复配置 -->
-    <!-- SD卡读取权限，用户写入离线定位数据 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 百度地图定位功能所需权限 -->
     <uses-permission android:name="android.permission.ACCESS_GPS" />
 
     <application
@@ -270,6 +253,21 @@
                     android:scheme="@string/scheme" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.GraphActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_graph"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 

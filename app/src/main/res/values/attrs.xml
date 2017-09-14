@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="graph_view">
+        <attr name="titleX" format="string" />
+        <attr name="titleY" format="string" />
+        <attr name="shareX" format="integer" />
+        <attr name="shareY" format="integer" />
+        <attr name="colorX" format="color" />
+        <attr name="colorY" format="color" />
+    </declare-styleable>
+</resources>
