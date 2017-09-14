@@ -7,10 +7,17 @@
 
     <demo.com.xiongyantest01.custom.graph.GraphView
         android:layout_width="300dp"
-        android:layout_height="480dp"
+        android:layout_height="200dp"
+        android:paddingLeft="@dimen/dp12"
         grap:colorX="@color/colorAccent"
-        grap:titleX="测试"
         grap:colorY="@color/colorPrimary"
-        grap:titleY="价格"
-        android:paddingLeft="@dimen/dp12"/>
+        grap:titleX="测试"
+        grap:titleY="价格" />
+
+    <demo.com.xiongyantest01.custom.graph.CircleView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp12"
+        grap:circle_color="@color/colorAccent" />
+
 </LinearLayout>

@@ -15,7 +15,7 @@ import demo.com.xiongyantest01.R;
 
 public class CustomViewActivity extends BaseActivity {
     private WebView webView;
-    private static final String LOAD_URL = "http://www.111.com.cn/cmsPage/20171cce6bf80913144453/index.html";
+    private static final String LOAD_URL = "http://www.111.com.cn/items/showDesc.action?itemId=971870";
 
     @Override
     protected int setLayoutId() {
