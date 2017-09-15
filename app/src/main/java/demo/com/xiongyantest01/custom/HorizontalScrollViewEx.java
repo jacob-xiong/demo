@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 
@@ -27,28 +28,43 @@ public class HorizontalScrollViewEx extends ViewGroup {
 
     public HorizontalScrollViewEx(Context context) {
         super(context);
+        init();
     }
 
     public HorizontalScrollViewEx(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
 
     public HorizontalScrollViewEx(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
     }
 
-    public HorizontalScrollViewEx(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
 
     private void init() {
-        mScroller = new Scroller(getContext());
-        mVelocityTracker = VelocityTracker.obtain();
+        if (mScroller == null) {
+            mScroller = new Scroller(getContext());
+            mVelocityTracker = VelocityTracker.obtain();
+        }
+
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        int childLeft = 0;
+        final int childCount = getChildCount();
+        mChildrenSize = childCount;
+        for (int i = 0; i < childCount; i++) {
+            final View childView = getChildAt(i);
+            if (childView.getVisibility() != View.GONE) {
+                final int childWidth = childView.getMeasuredWidth();
+                mChildWidth = childWidth;
+                childView.layout(childLeft, 0, childLeft + childWidth, childView.getMeasuredHeight());
+                childLeft += childWidth;
 
+            }
+        }
     }
 
     @Override
@@ -134,5 +150,40 @@ public class HorizontalScrollViewEx extends ViewGroup {
             postInvalidate();
         }
         super.computeScroll();
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int measureWidth;
+        int measureHeight;
+        final int childCount = getChildCount();
+        measureChildren(widthMeasureSpec, heightMeasureSpec);
+        int widthSpaceCode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthSpaceSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSpaceCode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightSpaceSize = MeasureSpec.getSize(heightMeasureSpec);
+        if (childCount == 0) {
+            setMeasuredDimension(0, 0);
+        } else if (widthSpaceCode == MeasureSpec.AT_MOST && heightSpaceCode == MeasureSpec.AT_MOST) {
+            final View childView = getChildAt(0);
+            measureWidth = childView.getMeasuredWidth() * childCount;
+            measureHeight = childView.getMeasuredHeight();
+            setMeasuredDimension(measureWidth, measureHeight);
+        } else if (widthSpaceCode == MeasureSpec.AT_MOST) {
+            final View childView = getChildAt(0);
+            measureWidth = childView.getMeasuredWidth() * childCount;
+            setMeasuredDimension(measureWidth, heightSpaceSize);
+        } else if (heightSpaceCode == MeasureSpec.AT_MOST) {
+            final View childView = getChildAt(0);
+            measureHeight = childView.getMeasuredHeight();
+            setMeasuredDimension(widthSpaceSize, measureHeight);
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        mVelocityTracker.recycle();
+        super.onDetachedFromWindow();
     }
 }
