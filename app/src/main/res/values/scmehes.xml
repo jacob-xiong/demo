@@ -13,6 +13,7 @@
     <string name="activity_binder_pool">binder_connection_pool</string>
     <string name="activity_custom">custom</string>
     <string name="activity_graph">graph</string>
+    <string name="activity_remote">remote_view</string>
 
 
 </resources>
