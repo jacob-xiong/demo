@@ -282,6 +282,17 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".widget.MyAppWidgetProvider">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_widget_provider_info">
+            </meta-data>
+            <intent-filter>
+                <action android:name="demo" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
+
+            </intent-filter>
+        </receiver>
     </application>
 
 
