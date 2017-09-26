@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RemoteViews;
 
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorInflater;
+import com.nineoldandroids.animation.ObjectAnimator;
+
 import demo.com.xiongyantest01.R;
 
 /**
@@ -19,6 +23,7 @@ import demo.com.xiongyantest01.R;
 
 public class RemoteViewActivity extends BaseActivity implements View.OnClickListener {
     private Button mNormalButton;
+    private int width = 500;
 
     @Override
     protected int setLayoutId() {
@@ -34,6 +39,7 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
     protected void initView() {
         mNormalButton = (Button) findViewById(R.id.remote_normal_btn);
         addClick();
+        addAnimation();
     }
 
     @Override
@@ -50,6 +56,7 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.remote_normal_btn:
                 showNormalNotification();
+                performAnimate();
                 break;
             default:
                 super.onClick(v);
@@ -67,5 +74,38 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this).setSmallIcon(R.mipmap.ic_launcher).setContentTitle("who case").setContentText("内容").setWhen(System.currentTimeMillis()).setAutoCancel(true).setDeleteIntent(pendingIntent);
         builder.setContent(remoteViews);
         manager.notify(1, builder.build());
+    }
+
+    private void addAnimation() {
+        Animator set = AnimatorInflater.loadAnimator(this, R.anim.property_animator);
+        set.setTarget(mNormalButton);
+        set.start();
+    }
+
+    private void performAnimate() {
+
+            width = -width;
+      
+
+        ViewWrapper wrapper = new ViewWrapper(mNormalButton);
+        ObjectAnimator.ofInt(wrapper, "width", width).setDuration(5000).start();
+    }
+
+
+    private static class ViewWrapper {
+        private View mTarget;
+
+        public ViewWrapper(View target) {
+            mTarget = target;
+        }
+
+        public int getWidth() {
+            return mTarget.getLayoutParams().width;
+        }
+
+        public void setWidth(int width) {
+            mTarget.getLayoutParams().width = width;
+            mTarget.requestLayout();
+        }
     }
 }
