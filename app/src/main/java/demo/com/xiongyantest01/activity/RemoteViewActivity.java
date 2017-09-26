@@ -11,7 +11,9 @@ import android.widget.RemoteViews;
 
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorInflater;
+import com.nineoldandroids.animation.IntEvaluator;
 import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
 
 import demo.com.xiongyantest01.R;
 
@@ -56,7 +58,10 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.remote_normal_btn:
                 showNormalNotification();
-                performAnimate();
+//                performAnimate();
+                performAnimate(mNormalButton, mNormalButton.getWidth(), mNormalButton.getWidth() - width);
+                width = -width;
+
                 break;
             default:
                 super.onClick(v);
@@ -83,9 +88,12 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
     }
 
     private void performAnimate() {
-
-            width = -width;
-      
+        if (width == 0) {
+            width = width + 500;
+        } else if (width == 500) {
+            width = -500;
+        } else if (width == -500)
+            width = 1000;
 
         ViewWrapper wrapper = new ViewWrapper(mNormalButton);
         ObjectAnimator.ofInt(wrapper, "width", width).setDuration(5000).start();
@@ -108,4 +116,22 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
             mTarget.requestLayout();
         }
     }
+
+
+    private void performAnimate(final View target, final int start, final int end) {
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(1, 100);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            private IntEvaluator mEvaluator = new IntEvaluator();
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                int currentValue = (int) valueAnimator.getAnimatedValue();
+                float fraction = valueAnimator.getAnimatedFraction();
+                target.getLayoutParams().width = mEvaluator.evaluate(fraction, start, end);
+                target.requestLayout();
+            }
+        });
+        valueAnimator.setDuration(2000).start();
+    }
+
 }
