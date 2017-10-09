@@ -4,8 +4,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PixelFormat;
 import android.support.v4.app.NotificationCompat;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RemoteViews;
 
@@ -23,9 +27,13 @@ import demo.com.xiongyantest01.R;
  * 常用于通知栏+桌面小部件
  */
 
-public class RemoteViewActivity extends BaseActivity implements View.OnClickListener {
+public class RemoteViewActivity extends BaseActivity implements View.OnClickListener{
     private Button mNormalButton;
     private int width = 500;
+    private int normalWidth;
+    private Button mNewButton;
+    private WindowManager.LayoutParams mLayoutParams;
+    WindowManager mWindowManager;
 
     @Override
     protected int setLayoutId() {
@@ -42,11 +50,11 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
         mNormalButton = (Button) findViewById(R.id.remote_normal_btn);
         addClick();
         addAnimation();
+//        addNewButton();
     }
 
     @Override
     protected void initIntent() {
-
     }
 
     private void addClick() {
@@ -58,9 +66,9 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.remote_normal_btn:
                 showNormalNotification();
-//                performAnimate();
-                performAnimate(mNormalButton, mNormalButton.getWidth(), mNormalButton.getWidth() - width);
-                width = -width;
+                performAnimate();
+//                performAnimate(mNormalButton, mNormalButton.getWidth(), mNormalButton.getWidth() - width);
+//                width = -width;
 
                 break;
             default:
@@ -88,15 +96,17 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
     }
 
     private void performAnimate() {
-        if (width == 0) {
-            width = width + 500;
-        } else if (width == 500) {
-            width = -500;
-        } else if (width == -500)
-            width = 1000;
-
         ViewWrapper wrapper = new ViewWrapper(mNormalButton);
-        ObjectAnimator.ofInt(wrapper, "width", width).setDuration(5000).start();
+
+        if (normalWidth == 0) {
+            normalWidth = mNormalButton.getWidth();
+            ObjectAnimator.ofInt(wrapper, "width", width).setDuration(5000).start();
+        } else {
+            ObjectAnimator.ofInt(wrapper, "width", width > 0 ? width : normalWidth).setDuration(5000).start();
+
+        }
+        width = -width;
+
     }
 
 
@@ -133,5 +143,36 @@ public class RemoteViewActivity extends BaseActivity implements View.OnClickList
         });
         valueAnimator.setDuration(2000).start();
     }
+
+    private void addNewButton() {
+        mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        mNewButton = new Button(this);
+        mNewButton.setText("测试");
+        mLayoutParams = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSPARENT);
+//        mLayoutParams.flags =   WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
+        mLayoutParams.gravity = Gravity.CENTER;
+        mLayoutParams.x = 200;
+        mLayoutParams.y = 400;
+        mWindowManager.addView(mNewButton, mLayoutParams);
+        mNewButton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int rawX = (int) event.getX();
+                int rawY = (int) event.getY();
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_MOVE:
+                        mLayoutParams.x = rawX;
+                        mLayoutParams.y = rawY;
+                        mWindowManager.updateViewLayout(mNewButton, mLayoutParams);
+                        break;
+
+                }
+                return false;
+            }
+        });
+
+    }
+
+
 
 }
