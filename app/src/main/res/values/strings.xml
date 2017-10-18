@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">XiongYanTest01</string>
+    <string name="vip_un_login_esc">1+会员\n每月专属优惠</string>
+    <string name="vip_not">1+会员\n每月专属特权</string>
+    <string name="vip_is_esc">1+会员\n我的特权</string>
+    <string name="vip_is_expire">1+会员\n续享特权</string>
 </resources>
