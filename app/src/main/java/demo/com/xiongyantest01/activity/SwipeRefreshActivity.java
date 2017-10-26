@@ -27,6 +27,7 @@ public class SwipeRefreshActivity extends Activity implements SwipeRefreshLayout
             "HTML"));
 
     private Handler mHandler = new Handler() {
+        @Override
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case REFRESH_COMPLETE:
@@ -39,7 +40,7 @@ public class SwipeRefreshActivity extends Activity implements SwipeRefreshLayout
         }
 
     };
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.swipe_refresh_layout_activity);
@@ -53,7 +54,7 @@ public class SwipeRefreshActivity extends Activity implements SwipeRefreshLayout
         mListView.setAdapter(mAdapter);
 
     }
-
+    @Override
     public void onRefresh() {
         mHandler.sendEmptyMessageDelayed(REFRESH_COMPLETE, 2000);
     }

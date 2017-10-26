@@ -100,7 +100,7 @@ public class MyZoomImageView extends ImageView {
          * 是否已经调用了点击事件
          */
         private boolean isClicked;
-
+        @Override
         public void handleMessage(android.os.Message msg) {
             matrix.set(getImageMatrix());
             switch (msg.what) {

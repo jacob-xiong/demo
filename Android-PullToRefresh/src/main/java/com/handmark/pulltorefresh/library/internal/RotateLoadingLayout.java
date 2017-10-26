@@ -54,14 +54,14 @@ public class RotateLoadingLayout extends LoadingLayout {
 		mRotateAnimation.setRepeatCount(Animation.INFINITE);
 		mRotateAnimation.setRepeatMode(Animation.RESTART);
 	}
-
+	@Override
 	public void onLoadingDrawableSet(Drawable imageDrawable) {
 		if (null != imageDrawable) {
 			mRotationPivotX = Math.round(imageDrawable.getIntrinsicWidth() / 2f);
 			mRotationPivotY = Math.round(imageDrawable.getIntrinsicHeight() / 2f);
 		}
 	}
-
+	@Override
 	protected void onPullImpl(float scaleOfLayout) {
 		float angle;
 		if (mRotateDrawableWhilePulling) {

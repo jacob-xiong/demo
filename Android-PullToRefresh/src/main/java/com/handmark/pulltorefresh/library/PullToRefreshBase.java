@@ -371,7 +371,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
 		return false;
 	}
-
+	@Override
 	public final void setScrollingWhileRefreshingEnabled(boolean allowScrollingWhileRefreshing) {
 		mScrollingWhileRefreshingEnabled = allowScrollingWhileRefreshing;
 	}
@@ -428,7 +428,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 			updateUIForMode();
 		}
 	}
-
+	@Override
 	public void setOnPullEventListener(OnPullEventListener<T> listener) {
 		mOnPullEventListener = listener;
 	}
@@ -520,7 +520,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 		getLoadingLayoutProxy(mode.showHeaderLoadingLayout(), mode.showFooterLoadingLayout()).setReleaseLabel(
 				releaseLabel);
 	}
-
+	@Override
 	public void setScrollAnimationInterpolator(Interpolator interpolator) {
 		mScrollAnimationInterpolator = interpolator;
 	}

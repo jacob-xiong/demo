@@ -5,28 +5,28 @@ import android.os.Message;
 import android.text.TextUtils;
 
 import com.android.volley.RequestQueue;
-import demo.com.xiongyantest01.utils.web.JsonParser.JsonParser;
 
 import demo.com.xiongyantest01.bean.ReturnTemple.ReturnTemple;
+import demo.com.xiongyantest01.utils.Utils;
+import demo.com.xiongyantest01.utils.web.JsonParser.JsonParser;
 import demo.com.xiongyantest01.utils.web.interfacepackage.IReq;
 import demo.com.xiongyantest01.utils.web.interfacepackage.IRequest;
 import demo.com.xiongyantest01.utils.web.interfacepackage.OnRespListener;
 import demo.com.xiongyantest01.utils.web.interfacepackage.WebBeans;
 import demo.com.xiongyantest01.utils.web.interfacepackage.WebMaps;
-import demo.com.xiongyantest01.utils.Utils;
 
 /**
  * Created by xiongyan on 2017/8/10.
  */
 
-public class GetRequest implements IRequest{
+public class GetRequest implements IRequest {
 
     public static final String COMMON_ERROR_MSG = "连接超时，请稍后重试...";
     public static final int COMMON_ERROR_CODE = 2;
 
     private RequestQueue queue;
 
-    public GetRequest(RequestQueue queue){
+    public GetRequest(RequestQueue queue) {
         this.queue = queue;
     }
 
@@ -41,7 +41,7 @@ public class GetRequest implements IRequest{
         CustomRequest.CustomListener customListener = new CustomRequest.CustomListener() {
             @Override
             public void onResponse(String response) {
-                if(response == null || response.equals("")){
+                if (response == null || "".equals(response)) {
                     Object result;
                     if (jsonParser != null) {
                         ReturnTemple temple = new ReturnTemple();
@@ -58,7 +58,7 @@ public class GetRequest implements IRequest{
                         message.obj = result;
                         handler.sendMessage(message);
                     }
-                }else{
+                } else {
                     /**
                      * 有些请求默认是没有parser传过来的，出参只求String，譬如联合登录等
                      * 所以加了一个else if
@@ -100,7 +100,7 @@ public class GetRequest implements IRequest{
     }
 
     @Override
-    public IReq getRequest(WebMaps params, final JsonParser jsonParser,String methodName, final OnRespListener listener) {
+    public IReq getRequest(WebMaps params, final JsonParser jsonParser, String methodName, final OnRespListener listener) {
         Utils.setSign(params);
         String url = Utils.getUrl();
         if (!TextUtils.isEmpty(methodName)) {
@@ -110,7 +110,7 @@ public class GetRequest implements IRequest{
         CustomRequest.CustomListener customListener = new CustomRequest.CustomListener() {
             @Override
             public void onResponse(String response) {
-                if(response == null || response.equals("")){//请求失败
+                if (response == null ||"".equals(response)) {//请求失败
                     ReturnTemple temple = new ReturnTemple();
                     temple.issuccessful = false;
                     if (jsonParser != null) {
@@ -121,7 +121,7 @@ public class GetRequest implements IRequest{
                     }
 
                     listener.onResp(temple);
-                }else{
+                } else {
                     /**
                      * 有些请求默认是没有parser传过来的，出参只求String，譬如联合登录等
                      * 所以加了一个else if

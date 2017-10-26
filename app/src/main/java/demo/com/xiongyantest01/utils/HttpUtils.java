@@ -30,6 +30,7 @@ public class HttpUtils {
      */
     public static void doGetAsyn(final String urlStr, final CallBack callBack) {
         new Thread() {
+            @Override
             public void run() {
                 try {
                     String result = doGet(urlStr);
@@ -57,6 +58,7 @@ public class HttpUtils {
     public static void doPostAsyn(final String urlStr, final String params,
                                   final CallBack callBack) throws Exception {
         new Thread() {
+            @Override
             public void run() {
                 try {
                     String result = doPost(urlStr, params);
@@ -113,13 +115,15 @@ public class HttpUtils {
             e.printStackTrace();
         } finally {
             try {
-                if (is != null)
+                if (is != null) {
                     is.close();
+                }
             } catch (IOException e) {
             }
             try {
-                if (baos != null)
+                if (baos != null) {
                     baos.close();
+                }
             } catch (IOException e) {
             }
             conn.disconnect();
@@ -160,7 +164,7 @@ public class HttpUtils {
             conn.setReadTimeout(TIMEOUT_IN_MILLIONS);
             conn.setConnectTimeout(TIMEOUT_IN_MILLIONS);
 
-            if (param != null && !param.trim().equals("")) {
+            if (param != null && !"".equals(param.trim())) {
                 // 获取URLConnection对象对应的输出流
                 out = new PrintWriter(conn.getOutputStream());
                 // 发送请求参数

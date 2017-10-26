@@ -59,8 +59,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public static synchronized DatabaseHelper getHelper(Context context) {
         if (instance == null) {
             synchronized (DatabaseHelper.class) {
-                if (instance == null)
+                if (instance == null) {
                     instance = new DatabaseHelper(context);
+                }
             }
         }
 

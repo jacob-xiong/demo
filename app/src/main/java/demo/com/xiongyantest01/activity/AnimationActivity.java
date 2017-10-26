@@ -48,7 +48,7 @@ public class AnimationActivity extends Activity {
 
     private void setText() {
         SpannableStringBuilder spanBuilder = new SpannableStringBuilder(getResources().getString(R.string.vip_un_login_esc));
-        spanBuilder.setSpan(new TextAppearanceSpan(null, 0, 30, null, null), 4, spanBuilder.length() , Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+        spanBuilder.setSpan(new TextAppearanceSpan(null, 0, 30, null, null), 4, spanBuilder.length () , Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
         demo.setText(spanBuilder);
 
         SpannableStringBuilder spanBuilder1 = new SpannableStringBuilder(getResources().getString(R.string.vip_not));

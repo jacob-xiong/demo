@@ -64,7 +64,7 @@ public class LoadingLayoutProxy implements ILoadingLayout {
 			layout.setReleaseLabel(label);
 		}
 	}
-
+	@Override
 	public void setTextTypeface(Typeface tf) {
 		for (LoadingLayout layout : mLoadingLayouts) {
 			layout.setTextTypeface(tf);
