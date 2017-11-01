@@ -42,7 +42,20 @@ public class ZoomActivity extends BaseActivity {
 
     }
 
+    /**
+     *   四个步奏 ：
+     *   1、将inJustDecodeBounds设置为true预加载图片得到图片的原始宽高
+        2、结合设定的像素和原始宽高计算出采样率inSampleSize
+        3、将inJustDecodeBounds设为false 用计算出的采样率加载图片
+        4、inSampleSize 为2的指数
+     * @param res
+     * @param resId
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
     private Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(res, resId, options);
