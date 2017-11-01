@@ -1,0 +1,4 @@
+demo.com.wheel
+int drawable wheel_bg 0x7f090001
+int drawable wheel_val 0x7f090002
+int string app_name 0x7f150001
