@@ -6,6 +6,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import demo.com.xiongyantest01.R;
 
 /**
@@ -33,8 +42,9 @@ public class ZoomActivity extends BaseActivity {
     protected void initView() {
         mYuanShi = (ImageView) findViewById(R.id.yuan_shi);
         mZoom = (ImageView) findViewById(R.id.zoom);
-        mYuanShi.setImageBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.demo));
-        mZoom.setImageBitmap(decodeSampledBitmapFromResource(getResources(),R.drawable.demo,100,100));
+        mYuanShi.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.demo));
+        mZoom.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.demo, 100, 100));
+        isTimeAfterAppointedDate();
     }
 
     @Override
@@ -43,11 +53,12 @@ public class ZoomActivity extends BaseActivity {
     }
 
     /**
-     *   四个步奏 ：
-     *   1、将inJustDecodeBounds设置为true预加载图片得到图片的原始宽高
-        2、结合设定的像素和原始宽高计算出采样率inSampleSize
-        3、将inJustDecodeBounds设为false 用计算出的采样率加载图片
-        4、inSampleSize 为2的指数
+     * 四个步奏 ：
+     * 1、将inJustDecodeBounds设置为true预加载图片得到图片的原始宽高
+     * 2、结合设定的像素和原始宽高计算出采样率inSampleSize
+     * 3、将inJustDecodeBounds设为false 用计算出的采样率加载图片
+     * 4、inSampleSize 为2的指数
+     *
      * @param res
      * @param resId
      * @param reqWidth
@@ -80,5 +91,39 @@ public class ZoomActivity extends BaseActivity {
 
     }
 
+    private boolean isTimeAfterAppointedDate() {
+        java.util.Date nowDate = null;
+        if (nowDate == null) {
+            nowDate = new java.util.Date();
+        }
+        String appointedDate = "2017/11/10";
+        boolean flag = false;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.CHINA);
+        Date date;
+        try {
+            date = sdf.parse(appointedDate);
+            flag = nowDate.after(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
+        return flag;
+    }
+
+    private Date getDateFromBaiDu() {
+        URL url;
+        Date date = null;
+        try {
+            url = new URL("http://www.baidu.com");
+            URLConnection uc = url.openConnection();
+            uc.connect();
+            long ld = uc.getDate();
+            date = new Date(ld);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
 }
