@@ -35,6 +35,12 @@
         android:padding="@dimen/dp12"
         android:text="过渡动画"
         android:textSize="12sp" />
+    <TextView
+        android:id="@+id/demo4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp12"
+        android:textSize="12sp" />
 
 
     <ImageView
