@@ -9,9 +9,12 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.TextAppearanceSpan;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import demo.com.xiongyantest01.R;
+import demo.com.xiongyantest01.utils.AllCapTransformationMethod;
 
 /**
  * Created by xiongyan on 2017/7/27.
@@ -21,6 +24,8 @@ import demo.com.xiongyantest01.R;
 
 public class AnimationActivity extends Activity {
     TextView demo, demo1, demo2, demo3, demo4;
+    EditText mEditText,mEditText1;
+    Button buttonDemo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,13 +37,25 @@ public class AnimationActivity extends Activity {
         demo3 = (TextView) findViewById(R.id.demo3);
         demo4 = (TextView) findViewById(R.id.demo4);
         demo4.setText(Html.fromHtml(getTitleText()));
+        mEditText = (EditText) findViewById(R.id.demo_text);
+        mEditText1 = (EditText) findViewById(R.id.demo_text1);
+        mEditText.setTransformationMethod(new AllCapTransformationMethod());
         demo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendIntent();
+
             }
         });
         setText();
+        buttonDemo= (Button) findViewById(R.id.demo_button);
+        buttonDemo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("---------------------" + mEditText.getText().toString().toUpperCase());
+                System.out.println("---------------------" + mEditText1.getText());
+            }
+        });
     }
 
     private String getTitleText() {

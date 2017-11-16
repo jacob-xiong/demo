@@ -35,6 +35,7 @@
         android:padding="@dimen/dp12"
         android:text="过渡动画"
         android:textSize="12sp" />
+
     <TextView
         android:id="@+id/demo4"
         android:layout_width="wrap_content"
@@ -50,5 +51,22 @@
         android:background="@drawable/demo"
         android:padding="@dimen/dp12"
         android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/demo_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginTop="@dimen/dp12" />
+    <EditText
+        android:id="@+id/demo_text1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
+        android:layout_marginTop="@dimen/dp12" />
+    <Button
+        android:id="@+id/demo_button"
+        android:layout_height="@dimen/dp48"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp12"
+        android:text="点击"/>
 
 </LinearLayout>
