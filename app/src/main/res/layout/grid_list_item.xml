@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="82.5dp"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:background="@drawable/grid_item_bg"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/fill_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/grid_item_img"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="#00000000"
+            android:padding="3dp" />
+
+        <TextView
+            android:id="@+id/grid_item_title"
+            style="@style/t31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="发票管理" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/fill_info_img_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/main_bottom_products_number_bg"
+        android:gravity="center"
+        android:minWidth="16dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="2dp"
+        android:text="未完善"
+        android:textColor="#FFFFFF"
+        android:textSize="10dp"
+        android:visibility="invisible" />
+</FrameLayout>
+

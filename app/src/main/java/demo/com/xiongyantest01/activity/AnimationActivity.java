@@ -52,9 +52,10 @@ public class AnimationActivity extends Activity {
         buttonDemo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("---------------------" + mEditText.getText().toString().toUpperCase());
+//                System.out.println("---------------------" + mEditText.getText().toString().toUpperCase());
                 System.out.println("---------------------" + mEditText1.getText());
-            }
+                mEditText.setText(mEditText1.getText());
+            } 
         });
     }
 

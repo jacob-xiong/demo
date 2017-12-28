@@ -3,6 +3,7 @@ package demo.com.xiongyantest01.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.TypedValue;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -17,8 +18,8 @@ import demo.com.xiongyantest01.utils.web.interfacepackage.WebMaps;
  */
 
 public class Utils {
-    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试", "判定是否有权限", "ContentProvider测试", "socket测试", "BinderConnection连接池", "自定义View", "柱状图", "RemoteView","图片缩放"};
-    private static int[] host = new int[]{R.string.activity_jump, R.string.activity_win8, R.string.activity_SwipeRefresh, R.string.activity_wheel_view, R.string.activity_base_test, R.string.activity_volley, R.string.activity_permission, R.string.activity_provider, R.string.activity_socket, R.string.activity_binder_pool, R.string.activity_custom, R.string.activity_graph, R.string.activity_remote,R.string.activity_zoom};
+    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试", "判定是否有权限", "ContentProvider测试", "socket测试", "BinderConnection连接池", "自定义View", "柱状图", "RemoteView", "图片缩放", "网格布局"};
+    private static int[] host = new int[]{R.string.activity_jump, R.string.activity_win8, R.string.activity_SwipeRefresh, R.string.activity_wheel_view, R.string.activity_base_test, R.string.activity_volley, R.string.activity_permission, R.string.activity_provider, R.string.activity_socket, R.string.activity_binder_pool, R.string.activity_custom, R.string.activity_graph, R.string.activity_remote, R.string.activity_zoom, R.string.activity_grid};
 
     public static ArrayList<MainBean> getMainData() {
         ArrayList<MainBean> list = new ArrayList<>();
@@ -117,5 +118,9 @@ public class Utils {
         builder.append(context.getResources().getString(host));
         builder.append("/");
         return builder.toString();
+    }
+
+    public static int dip2px(float dpValue, Context context) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, context.getResources().getDisplayMetrics());
     }
 }

@@ -15,6 +15,7 @@
     <string name="activity_graph">graph</string>
     <string name="activity_remote">remote_view</string>
     <string name="activity_zoom">zoom_view</string>
+    <string name="activity_grid">recycler_grid</string>
 
 
 </resources>
