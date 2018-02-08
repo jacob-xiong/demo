@@ -57,16 +57,36 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
         android:layout_marginTop="@dimen/dp12" />
+
     <EditText
         android:id="@+id/demo_text1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp48"
         android:layout_marginTop="@dimen/dp12" />
+
     <Button
         android:id="@+id/demo_button"
-        android:layout_height="@dimen/dp48"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/dp48"
         android:layout_marginTop="@dimen/dp12"
-        android:text="点击"/>
+        android:text="点击" />
+
+
+    <demo.com.xiongyantest01.widget.MarqueeView
+        android:id="@+id/demo_demo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff00ff">
+
+    </demo.com.xiongyantest01.widget.MarqueeView>
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper_demo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:flipInterval="5000"
+        android:padding="8dp">
+    </ViewFlipper>
 
 </LinearLayout>

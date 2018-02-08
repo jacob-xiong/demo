@@ -12,9 +12,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import demo.com.xiongyantest01.R;
 import demo.com.xiongyantest01.utils.AllCapTransformationMethod;
+import demo.com.xiongyantest01.widget.MarqueeView;
 
 /**
  * Created by xiongyan on 2017/7/27.
@@ -24,8 +32,10 @@ import demo.com.xiongyantest01.utils.AllCapTransformationMethod;
 
 public class AnimationActivity extends Activity {
     TextView demo, demo1, demo2, demo3, demo4;
-    EditText mEditText,mEditText1;
+    EditText mEditText, mEditText1;
     Button buttonDemo;
+    MarqueeView marqueeView;
+    ViewFlipper mViewFlipper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,15 +58,18 @@ public class AnimationActivity extends Activity {
             }
         });
         setText();
-        buttonDemo= (Button) findViewById(R.id.demo_button);
+        buttonDemo = (Button) findViewById(R.id.demo_button);
         buttonDemo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                System.out.println("---------------------" + mEditText.getText().toString().toUpperCase());
                 System.out.println("---------------------" + mEditText1.getText());
                 mEditText.setText(mEditText1.getText());
-            } 
+            }
         });
+
+//        changeDate();
+        setmarqueeView();
     }
 
     private String getTitleText() {
@@ -99,5 +112,34 @@ public class AnimationActivity extends Activity {
 
     }
 
+    private String changeDate(String time) {
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy.MM.dd");
+        String strFormat = "";
+        try {
+            Date date = myFormat.parse(time);
+            strFormat = myFormat.format(date);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return strFormat.replaceAll("-", ".");
+    }
+
+    private void setmarqueeView(){
+        List<String> list = new ArrayList<>();
+        list.add("不知道你");
+        list.add("是否");
+        list.add("热门");
+        list.add("热门放大放大发");
+        list.add("放大放大昂达个");
+        marqueeView= (MarqueeView) findViewById(R.id.demo_demo);
+        marqueeView.setTextArraysAndClickListener(list, new MarqueeView.MarqueeTextViewClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
 
 }
