@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_grid_view"
+        <demo.com.xiongyantest01.widget.CustomViewpager
+            android:id="@+id/view_page"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

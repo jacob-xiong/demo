@@ -1,17 +1,23 @@
 package demo.com.xiongyantest01.activity;
 
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowInsets;
 
 import java.util.ArrayList;
 
 import demo.com.xiongyantest01.R;
 import demo.com.xiongyantest01.adpater.GridAdapter;
+import demo.com.xiongyantest01.adpater.ViewpageAdapter;
 import demo.com.xiongyantest01.bean.GridBean;
 import demo.com.xiongyantest01.decoration.SpacesItemDecoration;
 import demo.com.xiongyantest01.layoutmanager.FullyGridLayoutManager;
 import demo.com.xiongyantest01.utils.T;
 import demo.com.xiongyantest01.utils.Utils;
+import demo.com.xiongyantest01.widget.CustomViewpager;
 
 /**
  * @author by xiongyan on 2017/12/13.
@@ -23,6 +29,7 @@ public class RecyclerViewGridActivity extends BaseActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<GridBean> mGridBeanList;
     private GridAdapter mGridAdapter;
+    private CustomViewpager mViewPage;
 
     @Override
     protected int setLayoutId() {
@@ -36,22 +43,30 @@ public class RecyclerViewGridActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_grid_view);
-        FullyGridLayoutManager mManagerColor = new FullyGridLayoutManager(RecyclerViewGridActivity.this, 4);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setNestedScrollingEnabled(false);//RecyclerView只有滑到底，NestedScrollView所影响的事件才会发生。
-        mRecyclerView.setLayoutManager(mManagerColor);
-        mRecyclerView.addItemDecoration(new SpacesItemDecoration(Utils.dip2px(1, RecyclerViewGridActivity.this), Utils.dip2px(1, RecyclerViewGridActivity.this), getResources().getColor(R.color.grid_line_bg)));
-        initListData();
-        mGridAdapter = new GridAdapter(RecyclerViewGridActivity.this, mGridBeanList);
+        mViewPage= (CustomViewpager) findViewById(R.id.view_page);
+         ArrayList<View>mViewPagerList = new ArrayList<>();
+         for(int i=0;i<5;i++){
+             RecyclerView  mRecyclerView= (RecyclerView) LayoutInflater.from(getApplicationContext()).inflate(R.layout.demo_demo, mViewPage, false);
+             StaggeredGridLayoutManager  mManagerColor = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
+             mRecyclerView.setHasFixedSize(true);
+             mRecyclerView.setNestedScrollingEnabled(false);//RecyclerView只有滑到底，NestedScrollView所影响的事件才会发生。
+             mRecyclerView.setLayoutManager(mManagerColor);
+             mRecyclerView.addItemDecoration(new SpacesItemDecoration(Utils.dip2px(1, RecyclerViewGridActivity.this), Utils.dip2px(1, RecyclerViewGridActivity.this), getResources().getColor(R.color.grid_line_bg)));
+             initListData();
+             mGridAdapter = new GridAdapter(RecyclerViewGridActivity.this, mGridBeanList);
 
-        mRecyclerView.setAdapter(mGridAdapter);
-        mGridAdapter.setOnItemClickLitener(new GridAdapter.OnItemClickLitener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                T.showShort(RecyclerViewGridActivity.this, title[position]);
-            }
-        });
+             mRecyclerView.setAdapter(mGridAdapter);
+             mGridAdapter.setOnItemClickLitener(new GridAdapter.OnItemClickLitener() {
+                 @Override
+                 public void onItemClick(View view, int position) {
+                     T.showShort(RecyclerViewGridActivity.this, title[position]);
+                 }
+             });
+
+             mViewPagerList.add(mRecyclerView);
+             mViewPage.setObjectForPosition(mRecyclerView,i);
+         }
+        mViewPage.setAdapter(new ViewpageAdapter(mViewPagerList));
     }
 
     private void initListData() {

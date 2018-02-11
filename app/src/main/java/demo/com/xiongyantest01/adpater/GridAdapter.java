@@ -34,7 +34,7 @@ public class GridAdapter extends
     public GridAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.grid_list_item,
                 parent, false);
-        GridAdapter.ViewHolder viewHolder = new GridAdapter.ViewHolder(view);
+        ViewHolder viewHolder = new GridAdapter.ViewHolder(view);
         viewHolder.mTitle = (TextView) view.findViewById(R.id.grid_item_title);
         viewHolder.mImageView = (ImageView) view.findViewById(R.id.grid_item_img);
         return viewHolder;
