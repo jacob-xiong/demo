@@ -322,20 +322,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MyTabActivity"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="@string/activity_tab"
-                    android:scheme="@string/scheme" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".activity.ViewPageActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -350,7 +336,20 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.TabActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_tab_fragment"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
     </application>
 
 
