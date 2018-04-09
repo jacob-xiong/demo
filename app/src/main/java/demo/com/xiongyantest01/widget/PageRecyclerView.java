@@ -30,7 +30,7 @@ public class PageRecyclerView extends RecyclerView {
     private float slideDistance = 0; // 滑动的距离
     private float scrollX = 0; // X轴当前的位置
 
-    private int spanRow = 1; // 行数
+    private int spanRow = 2; // 行数
     private int spanColumn = 3; // 每页列数
     private int totalPage = 0; // 总页数
     private int currentPage = 1; // 当前页

@@ -17,6 +17,7 @@
     <string name="activity_zoom">zoom_view</string>
     <string name="activity_grid">recycler_grid</string>
     <string name="activity_tab">tab_page</string>
+    <string name="activity_view_page">activity_view_page</string>
 
 
 </resources>

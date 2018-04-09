@@ -285,14 +285,14 @@
         <receiver android:name=".widget.MyAppWidgetProvider">
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/app_widget_provider_info">
-            </meta-data>
+                android:resource="@xml/app_widget_provider_info"></meta-data>
             <intent-filter>
                 <action android:name="demo" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
 
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".activity.ZoomActivity"
             android:theme="@style/AppTheme">
@@ -335,6 +335,21 @@
                     android:scheme="@string/scheme" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ViewPageActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/activity_view_page"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
+
 
     </application>
 
