@@ -16,6 +16,7 @@ import butterknife.BindView;
 import demo.com.xiongyantest01.R;
 import demo.com.xiongyantest01.adpater.MyTabActivityAdapter;
 import demo.com.xiongyantest01.bean.TabActivityItemBean;
+import demo.com.xiongyantest01.widget.MyRecylerView;
 import demo.com.xiongyantest01.widget.MySwipeRefreshLayout;
 
 /**
@@ -32,7 +33,7 @@ public class MyTabActivity extends BaseActivity {
     @BindView(R.id.tab_SwipeRefreshLayout)
     MySwipeRefreshLayout mTabSwipeRefreshLayout;
     @BindView(R.id.tab_main_recyler_view)
-    RecyclerView mTabMainRecyclerView;
+    MyRecylerView mTabMainRecyclerView;
     ArrayList<TabActivityItemBean> mData;
     private MyTabActivityAdapter myAdapter;
     private Handler mHandler = new Handler() {
