@@ -5,14 +5,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewStub;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
 import demo.com.xiongyantest01.R;
 import demo.com.xiongyantest01.bean.ReturnTemple.ReturnTemple;
 import demo.com.xiongyantest01.utils.T;
@@ -23,7 +24,7 @@ import demo.com.xiongyantest01.utils.web.Web;
  * 基类Activity
  */
 
-public abstract class BaseActivity extends Activity implements View.OnClickListener, Handler.Callback {
+public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener, Handler.Callback {
     protected LayoutInflater mInflater;
     protected Context context;
     private View mActionView;
@@ -43,6 +44,7 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
         setContentView(R.layout.base_activity);
         initIntent();
         initLayout();
+        ButterKnife.bind(this);
         initView();
         initActionBarTitle();
         loadData();
@@ -116,6 +118,8 @@ public abstract class BaseActivity extends Activity implements View.OnClickListe
             case R.id.action_right_tv:
                 break;
             case R.id.action_right_img:
+                break;
+            default:
                 break;
         }
     }

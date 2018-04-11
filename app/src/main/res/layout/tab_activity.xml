@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <include
+        android:id="@+id/home_title_view"
+        layout="@layout/tab_title_view" />
+
+    <demo.com.xiongyantest01.widget.MySwipeRefreshLayout
+        android:id="@+id/tab_SwipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/home_title_view">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/tab_main_recyler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </demo.com.xiongyantest01.widget.MySwipeRefreshLayout>
+</RelativeLayout>

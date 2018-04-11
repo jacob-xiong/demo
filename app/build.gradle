@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "demo.com.xiongyantest01"
         minSdkVersion 21
@@ -20,20 +20,24 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    compile 'de.greenrobot:greendao-generator:2.0.0'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile files('libs/ormlite-android-5.0.jar')
-    compile files('libs/ormlite-core-5.0.jar')
-    compile project(':wheel')
-    compile files('libs/volley.jar')
-    compile 'com.google.code.gson:gson:2.6.2'
-    compile project(':Android-PullToRefresh')
-    compile files('libs/nineoldandroids-2.4.0.jar')
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    implementation 'de.greenrobot:greendao-generator:2.0.0'
+    implementation 'com.android.support:recyclerview-v7:25.3.1'
+    implementation files('libs/ormlite-android-5.0.jar')
+    implementation files('libs/ormlite-core-5.0.jar')
+    implementation project(':wheel')
+    implementation files('libs/volley.jar')
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation project(':Android-PullToRefresh')
+    implementation files('libs/nineoldandroids-2.4.0.jar')
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.android.support:design:25.3.1'
+
 }

@@ -28,6 +28,7 @@ public class Utils {
             bean.setItemTitle(title[i]);
             bean.setItemHost(host[i]);
             list.add(bean);
+
         }
         return list;
     }

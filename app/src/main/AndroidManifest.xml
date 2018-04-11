@@ -337,7 +337,7 @@
         </activity>
 
         <activity
-            android:name=".activity.TabActivity"
+            android:name=".activity.MyTabActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

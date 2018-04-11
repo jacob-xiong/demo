@@ -1,6 +1,7 @@
 package demo.com.xiongyantest01.widget;
 
 import android.content.Context;
+import android.support.v4.view.NestedScrollingChild;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,7 @@ import demo.com.xiongyantest01.R;
  * @author by xiongyan on 2018/2/8.
  */
 
-public class MarqueeView extends LinearLayout {
+public class MarqueeView extends LinearLayout  {
     private Context mContext;
     private ViewFlipper viewFlipper;
     private View marqueeTextView;

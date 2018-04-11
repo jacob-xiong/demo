@@ -5,6 +5,7 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
+import android.support.v4.view.NestedScrollingChild;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
@@ -13,7 +14,7 @@ import android.widget.ImageView;
  * Created by xiongyan on 2017/7/28.
  */
 
-public class MyZoomImageView extends ImageView {
+public class MyZoomImageView extends ImageView   {
     private static final String TAG = "MyZoomImageView";
 
     private static final int SCALE_REDUCE_INIT = 0;

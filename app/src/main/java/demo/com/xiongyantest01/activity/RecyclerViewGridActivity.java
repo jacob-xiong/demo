@@ -14,7 +14,7 @@ import demo.com.xiongyantest01.bean.GridBean;
 import demo.com.xiongyantest01.decoration.SpacesItemDecoration;
 import demo.com.xiongyantest01.utils.T;
 import demo.com.xiongyantest01.utils.Utils;
-import demo.com.xiongyantest01.widget.CustomViewpager;
+import demo.com.xiongyantest01.widget.WrapContentHeightViewPager;
 
 /**
  * @author by xiongyan on 2017/12/13.
@@ -26,7 +26,7 @@ public class RecyclerViewGridActivity extends BaseActivity {
     private RecyclerView mRecyclerView;
     private ArrayList<GridBean> mGridBeanList;
     private GridAdapter mGridAdapter;
-    private CustomViewpager mViewPage;
+    private WrapContentHeightViewPager mViewPage;
 
     @Override
     protected int setLayoutId() {
@@ -40,7 +40,7 @@ public class RecyclerViewGridActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mViewPage = (CustomViewpager) findViewById(R.id.view_page);
+        mViewPage = (WrapContentHeightViewPager) findViewById(R.id.view_page);
         ArrayList<View> mViewPagerList = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             RecyclerView mRecyclerView = (RecyclerView) LayoutInflater.from(getApplicationContext()).inflate(R.layout.demo_demo, mViewPage, false);
