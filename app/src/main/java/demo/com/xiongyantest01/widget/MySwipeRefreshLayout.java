@@ -1,7 +1,9 @@
 package demo.com.xiongyantest01.widget;
 
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -26,32 +28,45 @@ public class MySwipeRefreshLayout extends SwipeRefreshLayout {
     }
 
     @Override
-    public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View childViewUnder = partRecyle.findChildViewUnder(ev.getX(), ev.getY());
+            RecyclerView.ViewHolder childViewHolder = childViewUnder == null ? null : partRecyle.getChildViewHolder(childViewUnder);
+            if (childViewHolder != null && childViewHolder instanceof TabSpecialViewHolder) {
+                requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        }
+        return super.onInterceptTouchEvent(ev);
+    }
 
-        return super.onStartNestedScroll(child, target, nestedScrollAxes);
+    @Override
+    public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {
+        return (nestedScrollAxes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
     }
 
     @Override
     public void onNestedScrollAccepted(View child, View target, int nestedScrollAxes) {
 
-        super.onNestedScrollAccepted(child, target, nestedScrollAxes);
+//        super.onNestedScrollAccepted(child, target, nestedScrollAxes);
     }
 
     @Override
     public void onStopNestedScroll(View target) {
 
-        super.onStopNestedScroll(target);
+//        super.onStopNestedScroll(target);
     }
 
     @Override
     public void onNestedScroll(View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        System.out.println("---------------dyConsumed----------------" + dyConsumed);
-        System.out.println("---------------dyUnconsumed----------------" + dyUnconsumed);
-        super.onNestedScroll(target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
+//        super.onNestedScroll(target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
     }
 
     @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
+        if (target.getId() == R.id.tab_main_recyler_view) {
+            return;
+        }
         RecyclerView.ViewHolder containingViewHolder = partRecyle.findContainingViewHolder(target);
         if (containingViewHolder != null && containingViewHolder instanceof TabSpecialViewHolder) {
             int top = containingViewHolder.itemView.getTop();
@@ -69,11 +84,8 @@ public class MySwipeRefreshLayout extends SwipeRefreshLayout {
                 consumed[1] = dy;
             }
             partRecyle.scrollBy(0, consumed[1]);
-            System.out.println("-----------------------------top----: " + top);
-            System.out.println("-----------------------------consumed----: " + consumed[1]);
         }
 
-        System.out.println("-----------------------------dy----: " + dy);
 
     }
 
@@ -85,7 +97,21 @@ public class MySwipeRefreshLayout extends SwipeRefreshLayout {
 
     @Override
     public boolean onNestedPreFling(View target, float velocityX, float velocityY) {
-        System.out.println("------------------------------------");
+        if (target.getId() == R.id.tab_main_recyler_view) {
+            return false;
+        }
+        LinearLayoutManager llm = (LinearLayoutManager) partRecyle.getLayoutManager();
+        int lastVisibleItemPosition = llm.findLastVisibleItemPosition();
+        if (lastVisibleItemPosition > 0) {
+            View viewByPosition = llm.findViewByPosition(lastVisibleItemPosition);
+            RecyclerView.ViewHolder childViewHolder = partRecyle.getChildViewHolder(viewByPosition);
+            if (childViewHolder != null
+                    && childViewHolder instanceof TabSpecialViewHolder
+                    && childViewHolder.itemView.getTop() != 0) {
+                partRecyle.fling((int) velocityX, (int) velocityY);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -104,17 +130,5 @@ public class MySwipeRefreshLayout extends SwipeRefreshLayout {
 
     }
 
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent e) {
-        int action = e.getAction();
-        if (action == MotionEvent.ACTION_DOWN && partRecyle != null) {
-            View childViewUnder = partRecyle.findChildViewUnder(e.getX(), e.getY());
-            RecyclerView.ViewHolder childViewHolder = childViewUnder == null ? null : partRecyle.getChildViewHolder(childViewUnder);
-            if (childViewHolder != null && childViewHolder instanceof TabSpecialViewHolder) {
-                requestDisallowInterceptTouchEvent(true);
-            }
-        }
 
-        return super.onInterceptTouchEvent(e);
-    }
 }

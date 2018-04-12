@@ -2,7 +2,10 @@ package demo.com.xiongyantest01.adpater.viewholder;
 
 import android.content.Context;
 import android.support.design.widget.TabLayout;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,10 +25,24 @@ public class TabSpecialViewHolder extends TabFloorBaseViewHolder {
     private TabLayoutAdapter mAdapter;
     private Context mContext;
 
-    public TabSpecialViewHolder(Context context, View itemView) {
+    public TabSpecialViewHolder(Context context, final ViewGroup parrent, final View itemView) {
         super(context, itemView);
         this.mContext = context;
         ButterKnife.bind(this, itemView);
+        final ViewTreeObserver viewTreeObserver = parrent.getViewTreeObserver();
+        viewTreeObserver.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                if (viewTreeObserver.isAlive()) {
+                    viewTreeObserver.removeOnPreDrawListener(this);
+                }
+//                mTabViewPager.setMaxHeight((int) (parrent.getHeight() - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, itemView.getContext().getResources().getDisplayMetrics()) - 20));
+                mTabViewPager.setMaxHeight((int) (parrent.getHeight() - mTabLayout.getHeight() - 20));
+                return false;
+            }
+
+        });
+
     }
 
     @Override
@@ -35,7 +52,7 @@ public class TabSpecialViewHolder extends TabFloorBaseViewHolder {
 
     @Override
     public void bind(TabActivityItemBean data) {
-        mAdapter = new TabLayoutAdapter(((MyTabActivity) mContext).getSupportFragmentManager(), data.getTabList(), data.getValueMap(),mTabViewPager);
+        mAdapter = new TabLayoutAdapter(((MyTabActivity) mContext).getSupportFragmentManager(), data.getTabList(), data.getValueMap(), mTabViewPager);
         mTabViewPager.setAdapter(mAdapter);
         mTabViewPager.setCurrentItem(0);
         mTabLayout.setupWithViewPager(mTabViewPager);

@@ -33,6 +33,12 @@ public class WrapContentHeightViewPager extends ViewPager {
         super(context, attrs);
     }
 
+    int maxHeight = -1;
+
+    public void setMaxHeight(int height) {
+        maxHeight = height;
+        resetHeight(current);
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -43,21 +49,22 @@ public class WrapContentHeightViewPager extends ViewPager {
                 height = child.getMeasuredHeight();
             }
         }
-
-        heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
-
+        if (maxHeight == -1) {
+            heightMeasureSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
+        } else {
+            heightMeasureSpec = MeasureSpec.makeMeasureSpec(Math.min(height, maxHeight), MeasureSpec.EXACTLY);
+        }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     public void resetHeight(int current) {
         this.current = current;
         if (mChildrenViews.size() > current) {
-
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) getLayoutParams();
             if (layoutParams == null) {
-                layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height);
+                layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, Math.min(height, maxHeight));
             } else {
-                layoutParams.height = height;
+                layoutParams.height = Math.min(height, maxHeight);
             }
             setLayoutParams(layoutParams);
         }

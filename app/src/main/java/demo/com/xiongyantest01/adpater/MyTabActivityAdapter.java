@@ -43,7 +43,7 @@ public class MyTabActivityAdapter extends RecyclerView.Adapter<RecyclerView.View
                 return normalViewHolder;
             case MyTabActivity.SPECIAL_TYPE:
                 itemView = getResView(parent, R.layout.tab_special_item);
-                TabSpecialViewHolder specialViewHolder = new TabSpecialViewHolder(mContext, itemView);
+                TabSpecialViewHolder specialViewHolder = new TabSpecialViewHolder(mContext, parent, itemView);
                 specialViewHolder.createView(0);
 //                mRecyclerView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
 //                    @Override

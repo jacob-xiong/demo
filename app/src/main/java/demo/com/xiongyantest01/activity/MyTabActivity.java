@@ -95,7 +95,7 @@ public class MyTabActivity extends BaseActivity {
         for (int i = 0; i < 15; i++) {
             tabList.add("类目" + i);
             ArrayList<String> valueList = new ArrayList<>();
-            for (int j = 0; j < 15; j++) {
+            for (int j = 0; j < 30; j++) {
                 String str = "第" + i + "类目" + "第" + j + "列";
                 valueList.add(str);
             }
@@ -118,7 +118,7 @@ public class MyTabActivity extends BaseActivity {
          */
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            outRect.set(0, 0, 0, 25);
+            outRect.set(0, 0, 0, 20);
         }
     }
 }

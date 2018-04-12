@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -54,7 +55,7 @@ public class TabLayoutFragment extends Fragment {
         if (view == null) {
             view = inflater.inflate(R.layout.tab_fragment, null);
             ButterKnife.bind(this, view);
-            mRecyclerView.setLayoutManager(new FullyLinearLayoutManager(getContext(), OrientationHelper.VERTICAL, false));
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), OrientationHelper.VERTICAL, false));
             mRecyclerView.setHasFixedSize(true);
             if (mData == null) {
                 mData = new ArrayList<>();

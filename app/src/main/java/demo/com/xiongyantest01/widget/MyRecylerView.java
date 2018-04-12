@@ -26,17 +26,16 @@ public class MyRecylerView extends RecyclerView {
     }
 
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent e) {
-        int action = e.getAction();
-        if (action == MotionEvent.ACTION_DOWN) {
-            View childViewUnder = findChildViewUnder(e.getX(), e.getY());
-            ViewHolder childViewHolder = childViewUnder == null ? null : getChildViewHolder(childViewUnder);
-            if (childViewUnder != null && childViewHolder instanceof TabSpecialViewHolder) {
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View childViewUnder = findChildViewUnder(ev.getX(), ev.getY());
+            RecyclerView.ViewHolder childViewHolder = childViewUnder == null ? null : getChildViewHolder(childViewUnder);
+            if (childViewHolder != null && childViewHolder instanceof TabSpecialViewHolder) {
                 requestDisallowInterceptTouchEvent(true);
                 return false;
             }
         }
-
-        return super.onInterceptTouchEvent(e);
+        return super.onInterceptTouchEvent(ev);
     }
+
 }
