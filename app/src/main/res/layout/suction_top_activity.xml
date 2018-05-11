@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <demo.com.xiongyantest01.widget.SuctionTopParentLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/bg_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/big_bg"
+            android:orientation="vertical"
+            android:paddingTop="44dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="各种文描" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/demo" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dibuwenmiao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bg_view"
+            android:background="#cda"
+            android:gravity="center"
+            android:text="底部还有文描" />
+
+        <TextView
+            android:id="@+id/fenleibiaoti"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@+id/dibuwenmiao"
+            android:background="#fad"
+            android:gravity="center"
+            android:text="分类标题" />
+
+        <demo.com.xiongyantest01.widget.SuctionTopParentChlidLayout
+            android:id="@+id/child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fenleibiaoti">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="通过上次比赛让小兔子明白了干什么事都要坚持到底，但还要动脑筋。于是小兔子又一次向乌龟发起了挑战。乌龟一口答应，就把比赛定在明日。
+
+　　到了第二天，森林里的动物都来看比赛，哪里热闹的像个菜市场。起点是小树林，终点是对面山下。比赛要开始了，大家都安静下来屏住呼吸，只见松鼠一摇尾巴，比赛开始。兔子像箭一样冲向前去，乌龟也奋力向前爬。要想到达终点山下，得路过一条小河，这可难住兔子了，这可怎么办？小兔子正发愁，正好乌龟也赶到了，它对兔子说：“你来坐在我的背上，咱俩一起过河。”兔子听了乐坏了，说着就上了乌龟的背上，两人很快就到了岸边。他们接着比赛，乌龟跑着跑着就来到了山边，面对如此高大的山峰，这可难住了乌龟，这时正好兔子赶到了，于是兔子亲切地说：“刚才你帮了我，这次我扛着你上山。”就这样他们合伙又一次战胜了困难。他们一路欢呼不停，最终两人同时到达终点。
+
+　　团结就是力量，这句话真有道理。当别人遇到困难时帮助别人也就是帮助自己！通过上次比赛让小兔子明白了干什么事都要坚持到底，但还要动脑筋。于是小兔子又一次向乌龟发起了挑战。乌龟一口答应，就把比赛定在明日。
+
+　　到了第二天，森林里的动物都来看比赛，哪里热闹的像个菜市场。起点是小树林，终点是对面山下。比赛要开始了，大家都安静下来屏住呼吸，只见松鼠一摇尾巴，比赛开始。兔子像箭一样冲向前去，乌龟也奋力向前爬。要想到达终点山下，得路过一条小河，这可难住兔子了，这可怎么办？小兔子正发愁，正好乌龟也赶到了，它对兔子说：“你来坐在我的背上，咱俩一起过河。”兔子听了乐坏了，说着就上了乌龟的背上，两人很快就到了岸边。他们接着比赛，乌龟跑着跑着就来到了山边，面对如此高大的山峰，这可难住了乌龟，这时正好兔子赶到了，于是兔子亲切地说：“刚才你帮了我，这次我扛着你上山。”就这样他们合伙又一次战胜了困难。他们一路欢呼不停，最终两人同时到达终点。
+
+　　团结就是力量，这句话真有道理。当别人遇到困难时帮助别人也就是帮助自己！通过上次比赛让小兔子明白了干什么事都要坚持到底，但还要动脑筋。于是小兔子又一次向乌龟发起了挑战。乌龟一口答应，就把比赛定在明日。
+
+　　到了第二天，森林里的动物都来看比赛，哪里热闹的像个菜市场。起点是小树林，终点是对面山下。比赛要开始了，大家都安静下来屏住呼吸，只见松鼠一摇尾巴，比赛开始。兔子像箭一样冲向前去，乌龟也奋力向前爬。要想到达终点山下，得路过一条小河，这可难住兔子了，这可怎么办？小兔子正发愁，正好乌龟也赶到了，它对兔子说：“你来坐在我的背上，咱俩一起过河。”兔子听了乐坏了，说着就上了乌龟的背上，两人很快就到了岸边。他们接着比赛，乌龟跑着跑着就来到了山边，面对如此高大的山峰，这可难住了乌龟，这时正好兔子赶到了，于是兔子亲切地说：“刚才你帮了我，这次我扛着你上山。”就这样他们合伙又一次战胜了困难。他们一路欢呼不停，最终两人同时到达终点。
+
+　　团结就是力量，这句话真有道理。当别人遇到困难时帮助别人也就是帮助自己！" />
+
+        </demo.com.xiongyantest01.widget.SuctionTopParentChlidLayout>
+
+    </demo.com.xiongyantest01.widget.SuctionTopParentLayout>
+
+    <TextView
+        android:id="@+id/biaoti"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="#afd"
+        android:gravity="center"
+        android:text="标题" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_gravity="bottom"
+        android:background="#fda"
+        android:gravity="center"
+        android:text="下方按钮" />
+</FrameLayout>

@@ -20,6 +20,7 @@ public class Win8Activity extends Activity {
          */
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         setContentView(R.layout.win8_activity);
-
     }
+
+
 }

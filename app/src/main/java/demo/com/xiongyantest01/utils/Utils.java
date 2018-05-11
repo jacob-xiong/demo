@@ -18,8 +18,8 @@ import demo.com.xiongyantest01.utils.web.interfacepackage.WebMaps;
  */
 
 public class Utils {
-    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试", "判定是否有权限", "ContentProvider测试", "socket测试", "BinderConnection连接池", "自定义View", "柱状图", "RemoteView", "图片缩放", "网格布局", "Recycle分页显示", "RecycleView多布局+ViewPager自适应+TabLayout吸顶"};
-    private static int[] host = new int[]{R.string.activity_jump, R.string.activity_win8, R.string.activity_SwipeRefresh, R.string.activity_wheel_view, R.string.activity_base_test, R.string.activity_volley, R.string.activity_permission, R.string.activity_provider, R.string.activity_socket, R.string.activity_binder_pool, R.string.activity_custom, R.string.activity_graph, R.string.activity_remote, R.string.activity_zoom, R.string.activity_grid, R.string.activity_view_page, R.string.activity_tab_fragment};
+    private static String[] title = new String[]{"Activity跳转动画", "Win8风格图片", "下拉刷新", "省市区联动WheelView", "BaseActivity测试", "Volley框架测试", "判定是否有权限", "ContentProvider测试", "socket测试", "BinderConnection连接池", "自定义View", "柱状图", "RemoteView", "图片缩放", "网格布局", "Recycle分页显示", "RecycleView多布局+ViewPager自适应+TabLayout吸顶","吸顶Activity"};
+    private static int[] host = new int[]{R.string.activity_jump, R.string.activity_win8, R.string.activity_SwipeRefresh, R.string.activity_wheel_view, R.string.activity_base_test, R.string.activity_volley, R.string.activity_permission, R.string.activity_provider, R.string.activity_socket, R.string.activity_binder_pool, R.string.activity_custom, R.string.activity_graph, R.string.activity_remote, R.string.activity_zoom, R.string.activity_grid, R.string.activity_view_page, R.string.activity_tab_fragment,R.string.activity_suction_top};
 
     public static ArrayList<MainBean> getMainData() {
         ArrayList<MainBean> list = new ArrayList<>();

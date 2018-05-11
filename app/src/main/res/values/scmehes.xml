@@ -18,6 +18,7 @@
     <string name="activity_grid">recycler_grid</string>
     <string name="activity_view_page">activity_view_page</string>
     <string name="activity_tab_fragment">activity_tab</string>
+    <string name="activity_suction_top">suction_top_activity</string>
 
 
 </resources>
