@@ -65,6 +65,14 @@ public class MySwipeRefreshLayout extends SwipeRefreshLayout {
     @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
         if (target.getId() == R.id.tab_main_recyler_view) {
+            RecyclerView.ViewHolder containingViewHolder = partRecyle.findContainingViewHolder(target);
+            if (containingViewHolder != null && containingViewHolder instanceof TabSpecialViewHolder) {
+                int top = containingViewHolder.itemView.getTop();
+                if (dy > top) {
+                    consumed[1] = dy - top;
+                    partRecyle.scrollBy(0, consumed[1]);
+                }
+            }
             return;
         }
         RecyclerView.ViewHolder containingViewHolder = partRecyle.findContainingViewHolder(target);

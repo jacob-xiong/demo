@@ -2,6 +2,7 @@ package demo.com.xiongyantest01.adpater.viewholder;
 
 import android.content.Context;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class TabSpecialViewHolder extends TabFloorBaseViewHolder {
     @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
     @BindView(R.id.view_pager)
-    WrapContentHeightViewPager mTabViewPager;
+    ViewPager mTabViewPager;
     private TabLayoutAdapter mAdapter;
     private Context mContext;
 
@@ -29,19 +30,21 @@ public class TabSpecialViewHolder extends TabFloorBaseViewHolder {
         super(context, itemView);
         this.mContext = context;
         ButterKnife.bind(this, itemView);
-        final ViewTreeObserver viewTreeObserver = parrent.getViewTreeObserver();
-        viewTreeObserver.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-                if (viewTreeObserver.isAlive()) {
-                    viewTreeObserver.removeOnPreDrawListener(this);
-                }
-//                mTabViewPager.setMaxHeight((int) (parrent.getHeight() - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, itemView.getContext().getResources().getDisplayMetrics()) - 20));
-                mTabViewPager.setMaxHeight((int) (parrent.getHeight() - mTabLayout.getHeight() - 20));
-                return false;
-            }
-
-        });
+//        final ViewTreeObserver viewTreeObserver = parrent.getViewTreeObserver();
+//        viewTreeObserver.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+//            @Override
+//            public boolean onPreDraw() {
+//                if (viewTreeObserver.isAlive()) {
+//                    viewTreeObserver.removeOnPreDrawListener(this);
+//                }
+////                mTabViewPager.setMaxHeight((int) (parrent.getHeight() - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, itemView.getContext().getResources().getDisplayMetrics()) - 20));
+//                ViewGroup.LayoutParams layoutParams=mTabViewPager.getLayoutParams();
+//                layoutParams.height=parrent.getHeight() - mTabLayout.getHeight() - 20;
+//                mTabViewPager.setLayoutParams(layoutParams);
+//                return false;
+//            }
+//
+//        });
 
     }
 
@@ -59,7 +62,7 @@ public class TabSpecialViewHolder extends TabFloorBaseViewHolder {
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                mTabViewPager.resetHeight(tab.getPosition());
+//                mTabViewPager.resetHeight(tab.getPosition());
             }
 
             @Override

@@ -3,6 +3,7 @@ package demo.com.xiongyantest01.adpater.viewholder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -18,9 +19,9 @@ public class TabLayoutAdapter extends FragmentStatePagerAdapter {
     private ArrayList<String> titleList;
     private TabLayoutFragment mTabLayoutFragment;
     private Map<Integer, ArrayList<String>> mMap;
-    private WrapContentHeightViewPager mTabViewPager;
+    private ViewPager mTabViewPager;
 
-    public TabLayoutAdapter(FragmentManager fm, ArrayList<String> titleList, Map<Integer, ArrayList<String>> map, WrapContentHeightViewPager tabViewPager) {
+    public TabLayoutAdapter(FragmentManager fm, ArrayList<String> titleList, Map<Integer, ArrayList<String>> map, ViewPager tabViewPager) {
         super(fm);
         this.titleList = titleList;
         this.mMap = map;

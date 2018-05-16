@@ -23,10 +23,10 @@
             app:tabSelectedTextColor="#FF394E"
             app:tabTextColor="#999999"></android.support.design.widget.TabLayout>
 
-        <demo.com.xiongyantest01.widget.WrapContentHeightViewPager
+        <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 

@@ -4,13 +4,14 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,8 +21,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import demo.com.xiongyantest01.R;
 import demo.com.xiongyantest01.adpater.MyTabFragmentAdapter;
-import demo.com.xiongyantest01.layoutmanager.FullyLinearLayoutManager;
-import demo.com.xiongyantest01.widget.WrapContentHeightViewPager;
 
 /**
  * @author by xiongyan on 2018/4/10.
@@ -35,10 +34,11 @@ public class TabLayoutFragment extends Fragment {
     RecyclerView mRecyclerView;
     private MyTabFragmentAdapter mAdapter;
     View view;
-    private static WrapContentHeightViewPager mTabViewPager;
+    private static ViewPager mTabViewPager;
+    private int mRequestPageId = 1;
 
 
-    public static TabLayoutFragment newInstance(int page, List<String> data, WrapContentHeightViewPager tabViewPager) {
+    public static TabLayoutFragment newInstance(int page, List<String> data, ViewPager tabViewPager) {
         TabLayoutFragment fragment = new TabLayoutFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -70,7 +70,35 @@ public class TabLayoutFragment extends Fragment {
             parentView.removeView(view);
         }
         measureHeight();
+        mRecyclerView.addOnScrollListener(new OnScrollListener() {
+            private int lastViewPosistion;
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (mAdapter != null && newState == RecyclerView.SCROLL_STATE_IDLE && lastViewPosistion + 1 == recyclerView.getLayoutManager().getItemCount()
+                        && mRequestPageId <= 8) {
+                    loadData();
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                lastViewPosistion = ((LinearLayoutManager) recyclerView.getLayoutManager()).findLastVisibleItemPosition();
+            }
+        });
         return view;
+    }
+
+    private void loadData() {
+        for (int i = 0; i < 10; i++) {
+            String str = "第" + mRequestPageId + "次请求" + i + "号商品";
+            mData.add(str);
+        }
+        mRequestPageId++;
+        mAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -94,17 +122,17 @@ public class TabLayoutFragment extends Fragment {
     }
 
     private void measureHeight() {
-        mRecyclerView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-                mRecyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
-                mTabViewPager.setObjectForPosition(view, mPagerPosition);
-                if (mTabViewPager.getCurrentItem() == 0) {
-                    mTabViewPager.resetHeight(0);
-                }
-                return false;
-            }
-        });
+//        mRecyclerView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+//            @Override
+//            public boolean onPreDraw() {
+//                mRecyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
+//                mTabViewPager.setObjectForPosition(view, mPagerPosition);
+//                if (mTabViewPager.getCurrentItem() == 0) {
+//                    mTabViewPager.resetHeight(0);
+//                }
+//                return false;
+//            }
+//        });
     }
 
 }

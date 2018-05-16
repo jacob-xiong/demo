@@ -33,7 +33,7 @@ public class MyTabActivityAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         final View itemView;
         switch (viewType) {
             case MyTabActivity.NORMAL_TYPE:
@@ -55,6 +55,21 @@ public class MyTabActivityAdapter extends RecyclerView.Adapter<RecyclerView.View
 //                        return false;
 //                    }
 //                });
+                final ViewTreeObserver viewTreeObserver = parent.getViewTreeObserver();
+                viewTreeObserver.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        if (viewTreeObserver.isAlive()) {
+                            viewTreeObserver.removeOnPreDrawListener(this);
+                        }
+//                mTabViewPager.setMaxHeight((int) (parrent.getHeight() - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 48, itemView.getContext().getResources().getDisplayMetrics()) - 20));
+                        ViewGroup.LayoutParams layoutParams=itemView.getLayoutParams();
+                        layoutParams.height=parent.getHeight()-20 ;
+                        itemView.setLayoutParams(layoutParams);
+                        return false;
+                    }
+
+                });
                 return specialViewHolder;
             default:
                 return null;
