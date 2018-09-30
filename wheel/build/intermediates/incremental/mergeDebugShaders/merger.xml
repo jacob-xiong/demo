@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\Android_My_Demo\XiongYanTest01\wheel\src\main\shaders"/></dataSet><dataSet config="debug"><source path="D:\Android_My_Demo\XiongYanTest01\wheel\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\workSpace\Android_My_Demo\demo\wheel\src\main\shaders"/></dataSet><dataSet config="debug"><source path="D:\workSpace\Android_My_Demo\demo\wheel\src\debug\shaders"/></dataSet></merger>

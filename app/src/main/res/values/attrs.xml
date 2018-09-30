@@ -12,4 +12,14 @@
     <declare-styleable name="circle_view">
         <attr name="circle_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="MyToolBar">
+        <attr name="rightButtonIcon" format="reference" />
+        <attr name="leftButtonIcon" format="reference" />
+        <attr name="isShowSearchView" format="boolean" />
+        <attr name="rightButtonText" format="string" />
+        <attr name="centerTitleText" format="string" />
+    </declare-styleable>
+
+
 </resources>

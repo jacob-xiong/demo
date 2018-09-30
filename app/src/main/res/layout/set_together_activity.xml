@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/set_together_bg"
+    android:orientation="vertical"
+    tools:context=".activity.AppBarLayoutActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/set_together_title_bg"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <demo.com.xiongyantest01.widget.MyToolBar
+                android:id="@+id/set_together_title_view"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:minHeight="45dp"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:titleTextColor="@color/white">
+
+
+            </demo.com.xiongyantest01.widget.MyToolBar>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:gravity="center"
+                android:text="搭配买·价更优"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:id="@+id/set_together_shop_name_title_root_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/set_together_shop_name_title_view"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/set_together_shop_name_title_bg"
+                android:orientation="vertical"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp">
+
+                <TextView
+                    android:id="@+id/set_together_shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="广东壹号药业有限公司"
+                    android:textColor="#8726E7"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/set_together_shop_qualifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/set_together_arrow_right"
+                    android:text="企业资质"
+                    android:textColor="#8726E7"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/set_together_arrow_right"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/set_together_arrow_right" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:lineSpacingMultiplier="2"
+            android:text="CESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHICESHI" />
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>
