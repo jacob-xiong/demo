@@ -42,9 +42,9 @@ public class AppBarLayoutActivity extends BaseActivity {
                     /**
                      * 展开状态
                      */
-                    myToolBar.setBackgroundResource(R.color.transparent);
-                    mTitleRootView.setBackgroundResource(R.color.transparent);
-                    mTitleView.setBackgroundResource(R.drawable.set_together_shop_name_title_bg);
+//                    myToolBar.setBackgroundResource(R.color.transparent);
+//                    mTitleRootView.setBackgroundResource(R.color.transparent);
+//                    mTitleView.setBackgroundResource(R.drawable.set_together_shop_name_title_bg);
 
                 } else if (state == State.COLLAPSED) {
                     /**

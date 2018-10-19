@@ -1,12 +1,20 @@
 package demo.com.xiongyantest01.utils;
 
 import android.app.Activity;
+import android.app.AppOpsManager;
+import android.app.NotificationManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.v7.appcompat.BuildConfig;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * Created by xiongyan on 2017/8/17.
@@ -29,7 +37,7 @@ public class PermissionUtils {
     /**
      * @param activity
      */
-    public static void GoToSetting(Activity activity) {
+    public static void GoToSetting(Context activity) {
         try {
             switch (Build.MANUFACTURER) {
                 case MANUFACTURER_HUAWEI:
@@ -63,7 +71,7 @@ public class PermissionUtils {
         }
     }
 
-    public static void Huawei(Activity activity) {
+    public static void Huawei(Context activity) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
@@ -72,14 +80,14 @@ public class PermissionUtils {
         activity.startActivity(intent);
     }
 
-    public static void Meizu(Activity activity) {
+    public static void Meizu(Context activity) {
         Intent intent = new Intent("com.meizu.safe.security.SHOW_APPSEC");
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
         activity.startActivity(intent);
     }
 
-    public static void Xiaomi(Activity activity) {
+    public static void Xiaomi(Context activity) {
         Intent intent = new Intent("miui.intent.action.APP_PERM_EDITOR");
         ComponentName componentName = new ComponentName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
         intent.setComponent(componentName);
@@ -87,7 +95,7 @@ public class PermissionUtils {
         activity.startActivity(intent);
     }
 
-    public static void Sony(Activity activity) {
+    public static void Sony(Context activity) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
@@ -96,7 +104,7 @@ public class PermissionUtils {
         activity.startActivity(intent);
     }
 
-    public static void OPPO(Activity activity) {
+    public static void OPPO(Context activity) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
@@ -105,7 +113,7 @@ public class PermissionUtils {
         activity.startActivity(intent);
     }
 
-    public static void LG(Activity activity) {
+    public static void LG(Context activity) {
         Intent intent = new Intent("android.intent.action.MAIN");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
@@ -114,7 +122,7 @@ public class PermissionUtils {
         activity.startActivity(intent);
     }
 
-    public static void Letv(Activity activity) {
+    public static void Letv(Context activity) {
         Intent intent = new Intent();
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
@@ -128,7 +136,7 @@ public class PermissionUtils {
      *
      * @param activity
      */
-    public static void _360(Activity activity) {
+    public static void _360(Context activity) {
         Intent intent = new Intent("android.intent.action.MAIN");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("packageName", BuildConfig.APPLICATION_ID);
@@ -142,7 +150,7 @@ public class PermissionUtils {
      *
      * @param activity
      */
-    public static void ApplicationInfo(Activity activity) {
+    public static void ApplicationInfo(Context activity) {
         Intent localIntent = new Intent();
         localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         if (Build.VERSION.SDK_INT >= 9) {
@@ -165,4 +173,73 @@ public class PermissionUtils {
         Intent intent = new Intent(Settings.ACTION_SETTINGS);
         activity.startActivity(intent);
     }
+
+
+    public static boolean isNotificationEnabled(Context context) {
+        if (Build.VERSION.SDK_INT >= 26) {
+            return isEnableV26(context);
+        } else {
+            String CHECK_OP_NO_THROW = "checkOpNoThrow";
+            String OP_POST_NOTIFICATION = "OP_POST_NOTIFICATION";
+
+            AppOpsManager mAppOps = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
+            ApplicationInfo appInfo = context.getApplicationInfo();
+            String pkg = context.getApplicationContext().getPackageName();
+            int uid = appInfo.uid;
+
+            Class appOpsClass = null;
+            /* Context.APP_OPS_MANAGER */
+            try {
+                appOpsClass = Class.forName(AppOpsManager.class.getName());
+                Method checkOpNoThrowMethod = appOpsClass.getMethod(CHECK_OP_NO_THROW, Integer.TYPE,
+                        Integer.TYPE, String.class);
+                Field opPostNotificationValue = appOpsClass.getDeclaredField(OP_POST_NOTIFICATION);
+
+                int value = (Integer) opPostNotificationValue.get(Integer.class);
+                return ((Integer) checkOpNoThrowMethod.invoke(mAppOps, value, uid, pkg) ==
+                        AppOpsManager.MODE_ALLOWED);
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+
+    }
+
+    /**
+     * 8.0以上获取t通知栏状态
+     *
+     * @param context
+     * @return
+     */
+
+    private static boolean isEnableV26(Context context) {
+        ApplicationInfo appInfo = context.getApplicationInfo();
+        String pkg = context.getApplicationContext().getPackageName();
+        int uid = appInfo.uid;
+        try {
+            NotificationManager notificationManager = (NotificationManager)
+                    context.getSystemService(Context.NOTIFICATION_SERVICE);
+            Method sServiceField = notificationManager.getClass().getDeclaredMethod("getService");
+            sServiceField.setAccessible(true);
+            Object sService = sServiceField.invoke(notificationManager);
+
+            Method method = sService.getClass().getDeclaredMethod("areNotificationsEnabledForPackage"
+                    , String.class, Integer.TYPE);
+            method.setAccessible(true);
+            return (boolean) method.invoke(sService, pkg, uid);
+        } catch (Exception e) {
+            return true;
+        }
+    }
+
 }

@@ -50,19 +50,18 @@
         <LinearLayout
             android:id="@+id/set_together_shop_name_title_root_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
 
             <RelativeLayout
                 android:id="@+id/set_together_shop_name_title_view"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
+
                 android:background="@drawable/set_together_shop_name_title_bg"
-                android:orientation="vertical"
-                android:paddingLeft="18dp"
-                android:paddingRight="18dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/set_together_shop_name"

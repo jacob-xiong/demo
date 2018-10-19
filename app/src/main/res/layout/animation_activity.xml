@@ -86,7 +86,38 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:flipInterval="5000"
-        android:padding="8dp">
-    </ViewFlipper>
+        android:padding="8dp"></ViewFlipper>
 
+    <TextView
+        android:id="@+id/loan_ad_tv"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="#FFFCF1"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="搬血：需调动全身精血，滚滚如雷鸣，熔炼骨文，在血液中催发出神曦，从而淬炼天地造化，滋养肉身。最高可使肉身达至十万斤极境洞天：开辟。
+洞天等于是夺了天地造化，不断直接吸收外界神精，补充己身。最多可有十大洞天，石昊将十大洞天合一化为唯一无上洞天，疑似荒天帝修补演化仙域的重要手段。
+化灵：重塑真我过程，与以往不同的蜕变，从肉身到精神，再到沟通外界的洞天，产生灵性，都将演变。
+铭纹：不再彻底借鉴凶兽和猛禽的符文，能在体内铭刻自己一些符号。
+列阵：若说铭纹境是模仿其他种族，在体内刻下符文，能初步推演法，那它就是更高层次进化。能在体内刻下各种杀阵，如先天混沌大阵和曹雨生体内的第三杀阵。
+尊者（人皇）：平凡修士中的极致，超脱世俗，有成神可能。"
+        android:textColor="#E8772A"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/pay_for_other"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:background="@drawable/tv_list_item_bg_selector"
+        android:gravity="center"
+        android:text="找人代付"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 </LinearLayout>

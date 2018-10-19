@@ -3,6 +3,8 @@ package demo.com.xiongyantest01.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
@@ -31,7 +33,7 @@ import demo.com.xiongyantest01.widget.MarqueeView;
  */
 
 public class AnimationActivity extends Activity {
-    TextView demo, demo1, demo2, demo3, demo4;
+    TextView demo, demo1, demo2, demo3, demo4, demo5, pay;
     EditText mEditText, mEditText1;
     Button buttonDemo;
     MarqueeView marqueeView;
@@ -46,6 +48,8 @@ public class AnimationActivity extends Activity {
         demo2 = (TextView) findViewById(R.id.demo2);
         demo3 = (TextView) findViewById(R.id.demo3);
         demo4 = (TextView) findViewById(R.id.demo4);
+        demo5 = (TextView) findViewById(R.id.loan_ad_tv);
+        pay = (TextView) findViewById(R.id.pay_for_other);
         demo4.setText(Html.fromHtml(getTitleText()));
         mEditText = (EditText) findViewById(R.id.demo_text);
         mEditText1 = (EditText) findViewById(R.id.demo_text1);
@@ -69,7 +73,14 @@ public class AnimationActivity extends Activity {
         });
 
 //        changeDate();
-        setmarqueeView();
+//        setmarqueeView();
+        demo5.setSelected(true);
+        pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private String getTitleText() {
@@ -126,14 +137,14 @@ public class AnimationActivity extends Activity {
         return strFormat.replaceAll("-", ".");
     }
 
-    private void setmarqueeView(){
+    private void setmarqueeView() {
         List<String> list = new ArrayList<>();
         list.add("不知道你");
         list.add("是否");
         list.add("热门");
         list.add("热门放大放大发");
         list.add("放大放大昂达个");
-        marqueeView= (MarqueeView) findViewById(R.id.demo_demo);
+        marqueeView = (MarqueeView) findViewById(R.id.demo_demo);
         marqueeView.setTextArraysAndClickListener(list, new MarqueeView.MarqueeTextViewClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,5 +152,6 @@ public class AnimationActivity extends Activity {
             }
         });
     }
+
 
 }

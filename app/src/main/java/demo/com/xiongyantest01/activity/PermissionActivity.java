@@ -3,6 +3,7 @@ package demo.com.xiongyantest01.activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.v4.app.NotificationManagerCompat;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import demo.com.xiongyantest01.R;
 import demo.com.xiongyantest01.utils.PermissionUtils;
+import demo.com.xiongyantest01.widget.NotificationPermissionDialog;
 
 /**
  * Created by xiongyan on 2017/8/11.
@@ -39,10 +41,12 @@ public class PermissionActivity extends BaseActivity {
         demoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getNotification()) {
+                if (PermissionUtils.isNotificationEnabled(PermissionActivity.this)) {
                     demo.setText("有");
                 } else {
-                    PermissionUtils.GoToSetting(PermissionActivity.this);
+                    NotificationPermissionDialog dialog = new NotificationPermissionDialog();
+                    dialog.setContext(PermissionActivity.this);
+                    dialog.show(getFragmentManager(), "NotificationPermissionDialog");
                 }
             }
         });
@@ -72,4 +76,30 @@ public class PermissionActivity extends BaseActivity {
         intent.setData(uri);
         startActivity(intent);
     }
+
+    public static final String SETTINGS_ACTION =
+            "android.settings.APPLICATION_DETAILS_SETTINGS";
+
+    private void goToSet() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BASE) {
+            // 进入设置系统应用权限界面
+//            Intent intent = new Intent(Settings.ACTION_SETTINGS);//进入设置页面
+            Intent intent = new Intent()
+                    .setAction(SETTINGS_ACTION)
+                    .setData(Uri.fromParts("package",
+                            getApplicationContext().getPackageName(), null));
+            startActivity(intent);
+            return;
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {// 运行系统在5.x环境使用
+            // 进入设置系统应用权限界面
+//            Intent intent = new Intent(Settings.ACTION_SETTINGS);
+            Intent intent = new Intent()
+                    .setAction(SETTINGS_ACTION)
+                    .setData(Uri.fromParts("package",
+                            getApplicationContext().getPackageName(), null));
+            startActivity(intent);
+            return;
+        }
+    }
+
 }
