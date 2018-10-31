@@ -20,6 +20,7 @@
     <string name="activity_tab_fragment">activity_tab</string>
     <string name="activity_suction_top">suction_top_activity</string>
     <string name="activity_appbar_layout">activity_appbar_layout_activity</string>
+    <string name="recycle_and_edit_activity">recycle_and_edit_activity</string>
 
 
 </resources>

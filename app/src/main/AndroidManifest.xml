@@ -379,6 +379,23 @@
                     android:scheme="@string/scheme" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity.RecycleViewAndEditActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="@string/recycle_and_edit_activity"
+                    android:scheme="@string/scheme" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 
