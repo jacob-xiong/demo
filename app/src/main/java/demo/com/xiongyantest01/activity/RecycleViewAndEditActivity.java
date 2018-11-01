@@ -37,6 +37,14 @@ public class RecycleViewAndEditActivity extends BaseActivity implements RecycleE
     protected void loadData() {
 
     }
+    @Override
+    protected boolean isShowActionBarTitle() {
+        return true;
+    }
+    @Override
+    protected int getActionTitle() {
+        return R.string.app_name;
+    }
 
     @Override
     protected void initView() {
@@ -63,12 +71,12 @@ public class RecycleViewAndEditActivity extends BaseActivity implements RecycleE
 
     @Override
     public void clickAdd(int position) {
-
+        System.out.println("==========clickAdd===========" + position);
     }
 
     @Override
     public void clickReduce(int position) {
-
+        System.out.println("==========clickReduce===========" + position);
     }
 
     @Override
