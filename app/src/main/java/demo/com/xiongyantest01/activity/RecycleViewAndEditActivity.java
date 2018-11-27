@@ -14,6 +14,8 @@ import demo.com.xiongyantest01.utils.T;
 
 /**
  * @author by xiongyan on 2018/10/31.
+ *
+ *
  */
 public class RecycleViewAndEditActivity extends BaseActivity implements RecycleEditAdapter.RecycleEditListener, View.OnLayoutChangeListener {
     @BindView(R.id.recycler_and_edit)

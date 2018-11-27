@@ -24,6 +24,19 @@
         android:layout_marginTop="2dp"
         android:max="100"
         android:progress="10"
-        android:progressDrawable="@drawable/progress_bg" />
+        android:progressDrawable="@drawable/progress_bg"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/demo_demo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/demo_demo_bg"
+        android:gravity="center"
+        android:text="12"
+        android:textColor="#f0ff"
+        android:layout_gravity="center"
+        android:textSize="18sp"/>
+
 
 </LinearLayout>
